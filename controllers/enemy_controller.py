@@ -11,7 +11,11 @@ def get_all_enemies() -> tuple[Response, int]:
     Exemple : GET /enemies
     """
     enemies = EnemyService.get_all_enemies()
-    return jsonify(enemies), 200 if enemies else (jsonify({"error": "Aucun ennemi trouvé"}), 404)
+    if not enemies:  # ✅ Vérifie si la liste est vide
+        return jsonify({"error": "Aucun ennemi trouvé"}), 404
+
+    return jsonify(enemies), 200
+
 
 @enemy_controller.route('/<int:level>', methods=['GET'])
 def get_enemy(level: int) -> tuple[Response, int]:
@@ -20,7 +24,12 @@ def get_enemy(level: int) -> tuple[Response, int]:
     Exemple : GET /enemies/2
     """
     enemy = EnemyService.get_enemy(level)
-    return jsonify(enemy), 200 if enemy else (jsonify({'error': 'Enemy not found'}), 404)
+    if enemy:
+        return jsonify(enemy), 200
+    else:
+        return jsonify({'error': 'Enemy not found'}), 404  # ✅ Gère proprement les ennemis inexistants
+
+
 
 @enemy_controller.route('/<int:level>', methods=['DELETE'])
 def delete_enemy(level: int) -> tuple[Response, int]:

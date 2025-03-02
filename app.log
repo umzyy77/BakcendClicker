@@ -94,3 +94,110 @@ TypeError: cannot unpack non-iterable Response object
 2025-03-02 22:13:59,698 - INFO - 127.0.0.1 - - [02/Mar/2025 22:13:59] "[33mGET /enhancements/999 HTTP/1.1[0m" 404 -
 2025-03-02 22:14:45,264 - INFO - 127.0.0.1 - - [02/Mar/2025 22:14:45] "[33mGET /enhancements/-1 HTTP/1.1[0m" 404 -
 2025-03-02 22:15:07,047 - INFO - 127.0.0.1 - - [02/Mar/2025 22:15:07] "[33mGET /enhancements/-1 HTTP/1.1[0m" 404 -
+2025-03-02 22:18:05,513 - INFO - 127.0.0.1 - - [02/Mar/2025 22:18:05] "[33mGET /enhancements/-1 HTTP/1.1[0m" 404 -
+2025-03-02 22:18:07,505 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-02 22:18:07,520 - INFO - Récupération de l'amélioration 1 réussie.
+2025-03-02 22:18:07,521 - INFO - Amélioration 1 trouvée.
+2025-03-02 22:18:07,521 - INFO - 127.0.0.1 - - [02/Mar/2025 22:18:07] "GET /enhancements/1 HTTP/1.1" 200 -
+2025-03-02 22:18:19,034 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-02 22:18:19,051 - INFO - Récupération de l'ennemi de niveau 1 réussie.
+2025-03-02 22:18:19,051 - INFO - 127.0.0.1 - - [02/Mar/2025 22:18:19] "GET /enemies/1 HTTP/1.1" 200 -
+2025-03-02 22:18:21,167 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-02 22:18:21,181 - INFO - Récupération de tous les ennemis réussie.
+2025-03-02 22:18:21,181 - INFO - 127.0.0.1 - - [02/Mar/2025 22:18:21] "GET /enemies/ HTTP/1.1" 200 -
+2025-03-02 22:18:29,062 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-02 22:18:29,077 - INFO - Récupération de l'ennemi de niveau 1 réussie.
+2025-03-02 22:18:29,078 - INFO - 127.0.0.1 - - [02/Mar/2025 22:18:29] "GET /enemies/1 HTTP/1.1" 200 -
+2025-03-02 22:18:37,459 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-02 22:18:37,474 - ERROR - Ennemi de niveau 10 non trouvé.
+2025-03-02 22:18:37,474 - ERROR - Exception on /enemies/10 [GET]
+Traceback (most recent call last):
+  File "D:\umarnlg\Project\clikeur\FlaskProject\.venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\umarnlg\Project\clikeur\FlaskProject\.venv\Lib\site-packages\flask\app.py", line 920, in full_dispatch_request
+    return self.finalize_request(rv)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\umarnlg\Project\clikeur\FlaskProject\.venv\Lib\site-packages\flask\app.py", line 939, in finalize_request
+    response = self.make_response(rv)
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\umarnlg\Project\clikeur\FlaskProject\.venv\Lib\site-packages\flask\app.py", line 1267, in make_response
+    rv.headers.update(headers)
+  File "D:\umarnlg\Project\clikeur\FlaskProject\.venv\Lib\site-packages\werkzeug\datastructures\headers.py", line 526, in update
+    for key, value in arg:
+        ^^^^^^^^^^
+TypeError: cannot unpack non-iterable Response object
+2025-03-02 22:18:37,475 - INFO - 127.0.0.1 - - [02/Mar/2025 22:18:37] "[35m[1mGET /enemies/10 HTTP/1.1[0m" 500 -
+2025-03-02 22:19:13,669 - INFO - 127.0.0.1 - - [02/Mar/2025 22:19:13] "[33mGET /enemies/-1 HTTP/1.1[0m" 404 -
+2025-03-02 22:20:02,523 - ERROR - \u274c Erreur non gérée : type object 'EnemyService' has no attribute 'delete_enemy'
+2025-03-02 22:20:02,523 - INFO - 127.0.0.1 - - [02/Mar/2025 22:20:02] "[35m[1mDELETE /enemies/1 HTTP/1.1[0m" 500 -
+2025-03-02 22:20:51,224 - ERROR - \u274c Erreur non gérée : type object 'EnemyService' has no attribute 'delete_enemy'
+2025-03-02 22:20:51,224 - INFO - 127.0.0.1 - - [02/Mar/2025 22:20:51] "[35m[1mDELETE /enemies/1 HTTP/1.1[0m" 500 -
+2025-03-02 22:21:59,886 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-03-02 22:21:59,886 - INFO - [33mPress CTRL+C to quit[0m
+2025-03-02 22:22:06,470 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-02 22:22:06,484 - ERROR - Ennemi de niveau 999 non trouvé.
+2025-03-02 22:22:06,484 - INFO - 127.0.0.1 - - [02/Mar/2025 22:22:06] "[33mGET /enemies/999 HTTP/1.1[0m" 404 -
+2025-03-02 22:24:23,082 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-03-02 22:24:23,082 - INFO - [33mPress CTRL+C to quit[0m
+2025-03-02 22:24:26,149 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-02 22:24:26,180 - INFO - Ennemi niveau 1 supprimé avec succès.
+2025-03-02 22:24:26,181 - INFO - Ennemi niveau 1 supprimé avec succès.
+2025-03-02 22:24:26,181 - INFO - 127.0.0.1 - - [02/Mar/2025 22:24:26] "DELETE /enemies/1 HTTP/1.1" 200 -
+2025-03-02 22:24:32,495 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-02 22:24:32,509 - ERROR - Ennemi de niveau 1 non trouvé.
+2025-03-02 22:24:32,509 - INFO - 127.0.0.1 - - [02/Mar/2025 22:24:32] "[33mGET /enemies/1 HTTP/1.1[0m" 404 -
+2025-03-02 22:24:32,709 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-02 22:24:32,723 - ERROR - Ennemi de niveau 1 non trouvé.
+2025-03-02 22:24:32,723 - INFO - 127.0.0.1 - - [02/Mar/2025 22:24:32] "[33mGET /enemies/1 HTTP/1.1[0m" 404 -
+2025-03-02 22:24:51,341 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-02 22:24:51,357 - ERROR - Erreur lors de la récupération de l'ennemi 1 : (1146, "Table 'defaultdb.enemy' doesn't exist")
+2025-03-02 22:24:51,357 - INFO - 127.0.0.1 - - [02/Mar/2025 22:24:51] "[33mGET /enemies/1 HTTP/1.1[0m" 404 -
+2025-03-02 22:24:53,435 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-02 22:24:53,450 - ERROR - Erreur lors de la récupération des ennemis : (1146, "Table 'defaultdb.enemy' doesn't exist")
+2025-03-02 22:24:53,450 - ERROR - Exception on /enemies/ [GET]
+Traceback (most recent call last):
+  File "D:\umarnlg\Project\clikeur\FlaskProject\.venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\umarnlg\Project\clikeur\FlaskProject\.venv\Lib\site-packages\flask\app.py", line 920, in full_dispatch_request
+    return self.finalize_request(rv)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\umarnlg\Project\clikeur\FlaskProject\.venv\Lib\site-packages\flask\app.py", line 939, in finalize_request
+    response = self.make_response(rv)
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\umarnlg\Project\clikeur\FlaskProject\.venv\Lib\site-packages\flask\app.py", line 1267, in make_response
+    rv.headers.update(headers)
+  File "D:\umarnlg\Project\clikeur\FlaskProject\.venv\Lib\site-packages\werkzeug\datastructures\headers.py", line 526, in update
+    for key, value in arg:
+        ^^^^^^^^^^
+TypeError: cannot unpack non-iterable Response object
+2025-03-02 22:24:53,451 - INFO - 127.0.0.1 - - [02/Mar/2025 22:24:53] "[35m[1mGET /enemies/ HTTP/1.1[0m" 500 -
+2025-03-02 22:25:59,315 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-02 22:25:59,330 - INFO - Récupération de tous les ennemis réussie.
+2025-03-02 22:25:59,331 - INFO - 127.0.0.1 - - [02/Mar/2025 22:25:59] "GET /enemies/ HTTP/1.1" 200 -
+2025-03-02 22:29:00,352 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-03-02 22:29:00,352 - INFO - [33mPress CTRL+C to quit[0m
+2025-03-02 22:29:04,145 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-02 22:29:04,161 - ERROR - Erreur lors de la récupération des ennemis : (1146, "Table 'defaultdb.enemy' doesn't exist")
+2025-03-02 22:29:04,161 - ERROR - Exception on /enemies/ [GET]
+Traceback (most recent call last):
+  File "D:\umarnlg\Project\clikeur\FlaskProject\.venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\umarnlg\Project\clikeur\FlaskProject\.venv\Lib\site-packages\flask\app.py", line 920, in full_dispatch_request
+    return self.finalize_request(rv)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\umarnlg\Project\clikeur\FlaskProject\.venv\Lib\site-packages\flask\app.py", line 939, in finalize_request
+    response = self.make_response(rv)
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\umarnlg\Project\clikeur\FlaskProject\.venv\Lib\site-packages\flask\app.py", line 1267, in make_response
+    rv.headers.update(headers)
+  File "D:\umarnlg\Project\clikeur\FlaskProject\.venv\Lib\site-packages\werkzeug\datastructures\headers.py", line 526, in update
+    for key, value in arg:
+        ^^^^^^^^^^
+TypeError: cannot unpack non-iterable Response object
+2025-03-02 22:29:04,162 - INFO - 127.0.0.1 - - [02/Mar/2025 22:29:04] "[35m[1mGET /enemies/ HTTP/1.1[0m" 500 -
