@@ -1,6 +1,7 @@
 import pymysql
 import os
 from dotenv import load_dotenv
+from utils.logger import log_info, log_error
 
 # Charger les variables d'environnement
 load_dotenv()
@@ -21,8 +22,8 @@ def get_db_connection():
     """
     try:
         connection = pymysql.connect(**DB_CONFIG)
-        print("✅ Connexion réussie à MySQL !")
+        log_info("✅ Connexion réussie à MySQL !")
         return connection
     except pymysql.MySQLError as e:
-        print(f"❌ Erreur de connexion : {e}")
+        log_error(f"❌ Erreur de connexion MySQL : {e}")
         return None
