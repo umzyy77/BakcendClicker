@@ -1,5 +1,6 @@
 from flask import Blueprint, jsonify, Response
 from services.enhancement_service import EnhancementService
+from utils.logger import log_info, log_error
 
 enhancement_controller = Blueprint('enhancement', __name__, url_prefix='/enhancements')
 
@@ -21,4 +22,9 @@ def get_enhancement(enhancement_id: int) -> tuple[Response, int]:
     Exemple : GET /enhancements/1
     """
     enhancement = EnhancementService.get_enhancement(enhancement_id)
-    return jsonify(enhancement), 200 if enhancement else (jsonify({'error': 'Enhancement not found'}), 404)
+    if enhancement:
+        log_info(f"Amélioration {enhancement_id} trouvée.")
+        return jsonify(enhancement), 200
+    else:
+        log_error(f"Amélioration {enhancement_id} non trouvée.")
+        return jsonify({'error': 'Enhancement not found'}), 404
