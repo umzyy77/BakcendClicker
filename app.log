@@ -1,0 +1,96 @@
+2025-03-02 22:01:48,644 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-03-02 22:01:48,644 - INFO - [33mPress CTRL+C to quit[0m
+2025-03-02 22:02:09,095 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-03-02 22:02:09,095 - INFO - [33mPress CTRL+C to quit[0m
+2025-03-02 22:02:34,246 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-02 22:02:34,260 - INFO - Récupération de tous les ennemis réussie.
+2025-03-02 22:02:34,261 - INFO - 127.0.0.1 - - [02/Mar/2025 22:02:34] "GET /enemies/ HTTP/1.1" 200 -
+2025-03-02 22:02:34,389 - INFO - 127.0.0.1 - - [02/Mar/2025 22:02:34] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-03-02 22:02:42,165 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-03-02 22:02:42,165 - INFO - [33mPress CTRL+C to quit[0m
+2025-03-02 22:02:42,379 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-02 22:02:42,395 - INFO - Récupération de tous les ennemis réussie.
+2025-03-02 22:02:42,396 - INFO - 127.0.0.1 - - [02/Mar/2025 22:02:42] "GET /enemies/ HTTP/1.1" 200 -
+2025-03-02 22:02:44,227 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-02 22:02:44,242 - INFO - Récupération de tous les ennemis réussie.
+2025-03-02 22:02:44,242 - INFO - 127.0.0.1 - - [02/Mar/2025 22:02:44] "GET /enemies/ HTTP/1.1" 200 -
+2025-03-02 22:02:47,094 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-02 22:02:47,109 - INFO - Récupération de l'ennemi de niveau 1 réussie.
+2025-03-02 22:02:47,110 - INFO - 127.0.0.1 - - [02/Mar/2025 22:02:47] "GET /enemies/1 HTTP/1.1" 200 -
+2025-03-02 22:03:09,373 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-02 22:03:09,390 - INFO - Récupération de l'ennemi de niveau 2 réussie.
+2025-03-02 22:03:09,390 - INFO - 127.0.0.1 - - [02/Mar/2025 22:03:09] "GET /enemies/2 HTTP/1.1" 200 -
+2025-03-02 22:03:12,693 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-02 22:03:12,709 - INFO - Récupération de tous les ennemis réussie.
+2025-03-02 22:03:12,710 - INFO - 127.0.0.1 - - [02/Mar/2025 22:03:12] "GET /enemies/ HTTP/1.1" 200 -
+2025-03-02 22:04:29,349 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-02 22:04:29,363 - INFO - Joueur 1 trouvé.
+2025-03-02 22:04:29,363 - INFO - 127.0.0.1 - - [02/Mar/2025 22:04:29] "GET /players/1 HTTP/1.1" 200 -
+2025-03-02 22:04:31,233 - INFO - 127.0.0.1 - - [02/Mar/2025 22:04:31] "[31m[1mGET /players/ HTTP/1.1[0m" 405 -
+2025-03-02 22:04:31,561 - INFO - 127.0.0.1 - - [02/Mar/2025 22:04:31] "[33mGET /players HTTP/1.1[0m" 404 -
+2025-03-02 22:04:36,885 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-02 22:04:36,900 - INFO - Joueur 1 trouvé.
+2025-03-02 22:04:36,901 - INFO - 127.0.0.1 - - [02/Mar/2025 22:04:36] "GET /players/1 HTTP/1.1" 200 -
+2025-03-02 22:04:48,393 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-02 22:04:48,407 - INFO - 127.0.0.1 - - [02/Mar/2025 22:04:48] "GET /enhancements/ HTTP/1.1" 200 -
+2025-03-02 22:04:56,043 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-02 22:04:56,059 - INFO - 127.0.0.1 - - [02/Mar/2025 22:04:56] "GET /enhancements/4 HTTP/1.1" 200 -
+2025-03-02 22:07:33,627 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-02 22:07:33,642 - ERROR - Exception on /enhancements/10 [GET]
+Traceback (most recent call last):
+  File "D:\umarnlg\Project\clikeur\FlaskProject\.venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\umarnlg\Project\clikeur\FlaskProject\.venv\Lib\site-packages\flask\app.py", line 920, in full_dispatch_request
+    return self.finalize_request(rv)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\umarnlg\Project\clikeur\FlaskProject\.venv\Lib\site-packages\flask\app.py", line 939, in finalize_request
+    response = self.make_response(rv)
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\umarnlg\Project\clikeur\FlaskProject\.venv\Lib\site-packages\flask\app.py", line 1267, in make_response
+    rv.headers.update(headers)
+  File "D:\umarnlg\Project\clikeur\FlaskProject\.venv\Lib\site-packages\werkzeug\datastructures\headers.py", line 526, in update
+    for key, value in arg:
+        ^^^^^^^^^^
+TypeError: cannot unpack non-iterable Response object
+2025-03-02 22:07:33,645 - INFO - 127.0.0.1 - - [02/Mar/2025 22:07:33] "[35m[1mGET /enhancements/10 HTTP/1.1[0m" 500 -
+2025-03-02 22:09:58,160 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-03-02 22:09:58,160 - INFO - [33mPress CTRL+C to quit[0m
+2025-03-02 22:10:02,275 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-02 22:10:02,291 - ERROR - Amélioration 10 non trouvée.
+2025-03-02 22:10:02,291 - ERROR - \u274c Erreur non gérée : name 'log_error' is not defined
+2025-03-02 22:10:02,292 - INFO - 127.0.0.1 - - [02/Mar/2025 22:10:02] "[35m[1mGET /enhancements/10 HTTP/1.1[0m" 500 -
+2025-03-02 22:10:33,791 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-02 22:10:33,805 - ERROR - Amélioration 10 non trouvée.
+2025-03-02 22:10:33,805 - ERROR - \u274c Erreur non gérée : name 'log_error' is not defined
+2025-03-02 22:10:33,805 - INFO - 127.0.0.1 - - [02/Mar/2025 22:10:33] "[35m[1mGET /enhancements/10 HTTP/1.1[0m" 500 -
+2025-03-02 22:12:06,621 - INFO - 127.0.0.1 - - [02/Mar/2025 22:12:06] "[32mGET /enhancements HTTP/1.1[0m" 308 -
+2025-03-02 22:12:06,710 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-02 22:12:06,724 - INFO - 127.0.0.1 - - [02/Mar/2025 22:12:06] "GET /enhancements/ HTTP/1.1" 200 -
+2025-03-02 22:12:13,253 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-02 22:12:13,266 - INFO - Récupération de l'amélioration 1 réussie.
+2025-03-02 22:12:13,267 - ERROR - \u274c Erreur non gérée : name 'log_info' is not defined
+2025-03-02 22:12:13,267 - INFO - 127.0.0.1 - - [02/Mar/2025 22:12:13] "[35m[1mGET /enhancements/1 HTTP/1.1[0m" 500 -
+2025-03-02 22:12:35,566 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-03-02 22:12:35,566 - INFO - [33mPress CTRL+C to quit[0m
+2025-03-02 22:12:38,221 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-02 22:12:38,236 - INFO - Récupération de l'amélioration 1 réussie.
+2025-03-02 22:12:38,237 - INFO - 127.0.0.1 - - [02/Mar/2025 22:12:38] "GET /enhancements/1 HTTP/1.1" 200 -
+2025-03-02 22:13:45,733 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-03-02 22:13:45,733 - INFO - [33mPress CTRL+C to quit[0m
+2025-03-02 22:13:48,490 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-02 22:13:48,505 - INFO - Récupération de l'amélioration 1 réussie.
+2025-03-02 22:13:48,505 - INFO - Amélioration 1 trouvée.
+2025-03-02 22:13:48,506 - INFO - 127.0.0.1 - - [02/Mar/2025 22:13:48] "GET /enhancements/1 HTTP/1.1" 200 -
+2025-03-02 22:13:59,675 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-02 22:13:59,696 - ERROR - Amélioration 999 non trouvée.
+2025-03-02 22:13:59,696 - ERROR - Amélioration 999 non trouvée.
+2025-03-02 22:13:59,698 - INFO - 127.0.0.1 - - [02/Mar/2025 22:13:59] "[33mGET /enhancements/999 HTTP/1.1[0m" 404 -
+2025-03-02 22:14:45,264 - INFO - 127.0.0.1 - - [02/Mar/2025 22:14:45] "[33mGET /enhancements/-1 HTTP/1.1[0m" 404 -
+2025-03-02 22:15:07,047 - INFO - 127.0.0.1 - - [02/Mar/2025 22:15:07] "[33mGET /enhancements/-1 HTTP/1.1[0m" 404 -
