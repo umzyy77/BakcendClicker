@@ -25,7 +25,12 @@ def get_player(player_id: int) -> tuple[Response, int]:
     Exemple : GET /players/1
     """
     player = PlayerService.get_player(player_id)
-    return jsonify(player), 200 if player else (jsonify({'error': 'Player not found'}), 404)
+
+    if player:
+        return jsonify(player), 200
+    else:
+        return jsonify({'error': 'Player not found'}), 404  # ✅ Gère proprement les joueurs inexistants
+
 
 @player_controller.route('/<int:player_id>/click', methods=['POST'])
 def click(player_id: int) -> tuple[Response, int]:
@@ -34,7 +39,12 @@ def click(player_id: int) -> tuple[Response, int]:
     Exemple : POST /players/1/click
     """
     new_data = PlayerService.increment_clicks(player_id)
-    return jsonify(new_data), 200 if new_data else (jsonify({'error': 'Player not found'}), 404)
+
+    if new_data:  # ✅ Vérifie si l'XP a été mis à jour correctement
+        return jsonify(new_data), 200
+    else:
+        return jsonify({'error': 'Player not found'}), 404  # ✅ Gère proprement les joueurs inexistants
+
 
 @player_controller.route('/<int:player_id>/buy', methods=['POST'])
 def buy_enhancement(player_id: int) -> tuple[Response, int]:
@@ -47,7 +57,32 @@ def buy_enhancement(player_id: int) -> tuple[Response, int]:
     enhancement_id = data.get('enhancement_id')
 
     if enhancement_id is None:
-        return jsonify({'error': 'Missing enhancement_id'}), 400
+        return jsonify({'error': 'Missing enhancement_id'}), 400  # ✅ Mauvaise requête
 
     result = PlayerService.buy_enhancement(player_id, enhancement_id)
-    return jsonify(result), 200 if result else (jsonify({'error': 'Player not found or not enough experience'}), 400)
+
+    if result is None:  # ✅ Vérifie si le joueur ou l'amélioration n'existe pas
+        return jsonify({'error': 'Player or enhancement not found'}), 404  # ✅ Retourne 404 Not Found
+
+    if "error" in result:
+        status_code = 400 if result["error"] == "Not enough experience to buy this enhancement" else 404
+        return jsonify(result), status_code  # ✅ Retourne le bon code HTTP (400 ou 404)
+
+    return jsonify(result), 200  # ✅ Si tout est bon, retour en 200
+
+@player_controller.route('/<int:player_id>', methods=['DELETE'])
+def delete_player(player_id: int) -> tuple[Response, int]:
+    """
+    Supprime un joueur par son ID.
+    Exemple : DELETE /players/1
+    """
+    success = PlayerService.delete_player(player_id)
+
+    if success:
+        return jsonify({"message": "Player deleted"}), 200
+    else:
+        return jsonify({"error": "Player not found"}), 404  # ✅ Retourne 404 si le joueur n'existe pas
+
+
+
+
