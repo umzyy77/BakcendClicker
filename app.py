@@ -27,6 +27,11 @@ def handle_exception(e):
     log_error(f"❌ Erreur non gérée : {e}")
     return jsonify({"error": "Internal Server Error"}), 500
 
+@app.route('/')
+def hello_world():  # put application's code here
+    return 'Hello World!'
+
+
 if __name__ == '__main__':
     print("✅ Serveur en cours d'exécution sur http://127.0.0.1:5000/")
     app.run(debug=True)
