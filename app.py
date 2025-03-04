@@ -3,8 +3,8 @@ from flask_cors import CORS
 from werkzeug.exceptions import HTTPException
 
 # Import des controllers
-from controllers.enemy_controller import enemy_controller
-from controllers.enhancement_controller import enhancement_controller
+from controllers.mission_controller import mission_controller
+from controllers.upgrade_controller import upgrade_controller
 from controllers.player_controller import player_controller
 from utils.logger import log_error
 
@@ -12,8 +12,8 @@ app = Flask(__name__)
 CORS(app)  # Active CORS
 
 # Enregistrement des blueprints
-app.register_blueprint(enemy_controller)
-app.register_blueprint(enhancement_controller)
+app.register_blueprint(mission_controller)
+app.register_blueprint(upgrade_controller)
 app.register_blueprint(player_controller)
 
 # Middleware Global pour gérer les erreurs

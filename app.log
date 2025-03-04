@@ -1143,3 +1143,31 @@ TypeError: cannot unpack non-iterable Response object
 2025-03-04 11:04:25,648 - INFO - Joueur 2 trouvé.
 2025-03-04 11:04:25,648 - INFO - 127.0.0.1 - - [04/Mar/2025 11:04:25] "GET /players/2 HTTP/1.1" 200 -
 2025-03-04 11:04:28,171 - INFO - 127.0.0.1 - - [04/Mar/2025 11:04:28] "GET / HTTP/1.1" 200 -
+2025-03-04 11:04:40,964 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-03-04 11:04:40,964 - INFO - [33mPress CTRL+C to quit[0m
+2025-03-04 11:12:31,625 - INFO - 127.0.0.1 - - [04/Mar/2025 11:12:31] "GET / HTTP/1.1" 200 -
+2025-03-04 11:12:38,273 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-04 11:12:38,288 - INFO - Récupération de l'ennemi de niveau 1 réussie.
+2025-03-04 11:12:38,289 - INFO - 127.0.0.1 - - [04/Mar/2025 11:12:38] "GET /enemies/1 HTTP/1.1" 200 -
+2025-03-04 11:13:53,414 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-04 11:13:53,429 - INFO - Récupération de l'ennemi de niveau 1 réussie.
+2025-03-04 11:13:53,430 - INFO - 127.0.0.1 - - [04/Mar/2025 11:13:53] "GET /enemies/1 HTTP/1.1" 200 -
+2025-03-04 11:13:54,017 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-04 11:13:54,031 - INFO - Récupération de l'ennemi de niveau 1 réussie.
+2025-03-04 11:13:54,032 - INFO - 127.0.0.1 - - [04/Mar/2025 11:13:54] "GET /enemies/1 HTTP/1.1" 200 -
+2025-03-04 13:02:40,623 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-03-04 13:02:40,623 - INFO - [33mPress CTRL+C to quit[0m
+2025-03-04 13:02:49,281 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-04 13:02:49,312 - ERROR - Erreur lors de la récupération du joueur 2: (1146, "Table 'defaultdb.player' doesn't exist")
+2025-03-04 13:02:49,312 - INFO - 127.0.0.1 - - [04/Mar/2025 13:02:49] "[33mGET /players/2 HTTP/1.1[0m" 404 -
+2025-03-04 13:02:51,331 - INFO - 127.0.0.1 - - [04/Mar/2025 13:02:51] "[33mGET /players HTTP/1.1[0m" 404 -
+2025-03-04 13:03:06,129 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-04 13:03:06,145 - ERROR - Erreur lors de la récupération du joueur 1: (1146, "Table 'defaultdb.player' doesn't exist")
+2025-03-04 13:03:06,145 - INFO - 127.0.0.1 - - [04/Mar/2025 13:03:06] "[33mGET /players/1 HTTP/1.1[0m" 404 -
+2025-03-04 13:03:30,929 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-04 13:03:30,955 - INFO - 127.0.0.1 - - [04/Mar/2025 13:03:30] "GET /players/1 HTTP/1.1" 200 -
+2025-03-04 13:03:33,995 - INFO - 127.0.0.1 - - [04/Mar/2025 13:03:33] "[33mGET /players HTTP/1.1[0m" 404 -
+2025-03-04 13:03:38,617 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-04 13:03:38,634 - INFO - 127.0.0.1 - - [04/Mar/2025 13:03:38] "GET /players/2 HTTP/1.1" 200 -
