@@ -11,3 +11,4 @@ class Status:
             "id": self.id,
             "label": self.label
         }
+

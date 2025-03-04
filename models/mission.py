@@ -1,11 +1,13 @@
+from models.difficulty import Difficulty
+
 class Mission:
     """
     Représente une mission de piratage.
     """
-    def __init__(self, id_mission: int, name: str, id_difficulty: int, reward_money: int, reward_power: int):
+    def __init__(self, id_mission: int, name: str, reward_money: int, reward_power: int, difficulty: Difficulty):
         self.id = id_mission
         self.name = name
-        self.id_difficulty = id_difficulty
+        self.difficulty = difficulty
         self.reward_money = reward_money
         self.reward_power = reward_power
 
@@ -13,7 +15,7 @@ class Mission:
         return {
             "id": self.id,
             "name": self.name,
-            "id_difficulty": self.id_difficulty,
             "reward_money": self.reward_money,
-            "reward_power": self.reward_power
+            "reward_power": self.reward_power,
+            "difficulty": self.difficulty.to_dict()  # Sérialisation de l'objet Difficulty
         }

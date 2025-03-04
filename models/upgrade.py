@@ -11,3 +11,4 @@ class Upgrade:
             "id": self.id,
             "name": self.name
         }
+

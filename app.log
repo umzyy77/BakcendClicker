@@ -1171,3 +1171,9 @@ TypeError: cannot unpack non-iterable Response object
 2025-03-04 13:03:33,995 - INFO - 127.0.0.1 - - [04/Mar/2025 13:03:33] "[33mGET /players HTTP/1.1[0m" 404 -
 2025-03-04 13:03:38,617 - INFO - \u2705 Connexion réussie à MySQL !
 2025-03-04 13:03:38,634 - INFO - 127.0.0.1 - - [04/Mar/2025 13:03:38] "GET /players/2 HTTP/1.1" 200 -
+2025-03-04 17:47:31,715 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-03-04 17:47:31,716 - INFO - [33mPress CTRL+C to quit[0m
+2025-03-04 17:47:36,989 - INFO - 127.0.0.1 - - [04/Mar/2025 17:47:36] "[33mGET /books HTTP/1.1[0m" 404 -
+2025-03-04 17:47:43,148 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-04 17:47:43,164 - INFO - 127.0.0.1 - - [04/Mar/2025 17:47:43] "GET /players/2 HTTP/1.1" 200 -
