@@ -73,3 +73,461 @@ KeyError: -1
 2025-03-05 22:41:52,295 - INFO - \u2705 Connexion réussie à MySQL !
 2025-03-05 22:41:52,312 - ERROR - \U0001f6ab Mission 2 n'est pas en cours pour le joueur 3. Statut actuel: 2
 2025-03-05 22:41:52,312 - INFO - 127.0.0.1 - - [05/Mar/2025 22:41:52] "[31m[1mPATCH /player_missions/3/increment HTTP/1.1[0m" 400 -
+2025-03-05 22:42:12,069 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-03-05 22:42:12,069 - INFO - [33mPress CTRL+C to quit[0m
+2025-03-05 22:42:16,462 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:42:16,478 - INFO - 127.0.0.1 - - [05/Mar/2025 22:42:16] "GET /player_missions/3 HTTP/1.1" 200 -
+2025-03-05 22:42:16,706 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:42:16,721 - INFO - 127.0.0.1 - - [05/Mar/2025 22:42:16] "GET /player_missions/3 HTTP/1.1" 200 -
+2025-03-05 22:42:21,434 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:42:21,450 - ERROR - \U0001f6ab Mission 2 n'est pas en cours pour le joueur 3. Statut actuel: 2
+2025-03-05 22:42:21,450 - INFO - 127.0.0.1 - - [05/Mar/2025 22:42:21] "[31m[1mPATCH /player_missions/3/increment HTTP/1.1[0m" 400 -
+2025-03-05 22:45:17,601 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:45:17,634 - INFO - 127.0.0.1 - - [05/Mar/2025 22:45:17] "POST /player_missions/3/start HTTP/1.1" 200 -
+2025-03-05 22:45:24,528 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:45:24,620 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:45:24,690 - INFO - \u2705 Joueur 3 - Mission 2 : 3 clics enregistrés.
+2025-03-05 22:45:24,712 - INFO - 127.0.0.1 - - [05/Mar/2025 22:45:24] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:45:25,501 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:45:25,592 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:45:25,636 - INFO - \u2705 Joueur 3 - Mission 2 : 6 clics enregistrés.
+2025-03-05 22:45:25,651 - INFO - 127.0.0.1 - - [05/Mar/2025 22:45:25] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:45:25,897 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:45:25,991 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:45:26,036 - INFO - \u2705 Joueur 3 - Mission 2 : 9 clics enregistrés.
+2025-03-05 22:45:26,052 - INFO - 127.0.0.1 - - [05/Mar/2025 22:45:26] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:45:26,244 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:45:26,333 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:45:26,378 - INFO - \u2705 Joueur 3 - Mission 2 : 12 clics enregistrés.
+2025-03-05 22:45:26,395 - INFO - 127.0.0.1 - - [05/Mar/2025 22:45:26] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:45:26,598 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:45:26,693 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:45:26,737 - INFO - \u2705 Joueur 3 - Mission 2 : 15 clics enregistrés.
+2025-03-05 22:45:26,751 - INFO - 127.0.0.1 - - [05/Mar/2025 22:45:26] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:45:26,955 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:45:27,049 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:45:27,094 - INFO - \u2705 Joueur 3 - Mission 2 : 18 clics enregistrés.
+2025-03-05 22:45:27,109 - INFO - 127.0.0.1 - - [05/Mar/2025 22:45:27] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:45:27,341 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:45:27,430 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:45:27,474 - INFO - \u2705 Joueur 3 - Mission 2 : 21 clics enregistrés.
+2025-03-05 22:45:27,490 - INFO - 127.0.0.1 - - [05/Mar/2025 22:45:27] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:45:27,724 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:45:27,815 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:45:27,861 - INFO - \u2705 Joueur 3 - Mission 2 : 24 clics enregistrés.
+2025-03-05 22:45:27,876 - INFO - 127.0.0.1 - - [05/Mar/2025 22:45:27] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:45:35,916 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:45:35,932 - INFO - 127.0.0.1 - - [05/Mar/2025 22:45:35] "GET /player_missions/3 HTTP/1.1" 200 -
+2025-03-05 22:45:41,618 - INFO - 127.0.0.1 - - [05/Mar/2025 22:45:41] "[33mGET /player_missions/3/2 HTTP/1.1[0m" 404 -
+2025-03-05 22:45:57,115 - INFO - 127.0.0.1 - - [05/Mar/2025 22:45:57] "[33mGET /player_missions/3/2 HTTP/1.1[0m" 404 -
+2025-03-05 22:45:59,335 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:45:59,350 - INFO - 127.0.0.1 - - [05/Mar/2025 22:45:59] "GET /player_missions/3 HTTP/1.1" 200 -
+2025-03-05 22:46:04,407 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:04,497 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:04,547 - INFO - \u2705 Joueur 3 - Mission 2 : 27 clics enregistrés.
+2025-03-05 22:46:04,563 - INFO - 127.0.0.1 - - [05/Mar/2025 22:46:04] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:46:06,570 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:06,585 - INFO - 127.0.0.1 - - [05/Mar/2025 22:46:06] "GET /player_missions/3 HTTP/1.1" 200 -
+2025-03-05 22:46:34,749 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:34,853 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:34,899 - INFO - \u2705 Joueur 3 - Mission 2 : 30 clics enregistrés.
+2025-03-05 22:46:34,914 - INFO - 127.0.0.1 - - [05/Mar/2025 22:46:34] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:46:35,085 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:35,177 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:35,223 - INFO - \u2705 Joueur 3 - Mission 2 : 33 clics enregistrés.
+2025-03-05 22:46:35,240 - INFO - 127.0.0.1 - - [05/Mar/2025 22:46:35] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:46:35,441 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:35,534 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:35,580 - INFO - \u2705 Joueur 3 - Mission 2 : 36 clics enregistrés.
+2025-03-05 22:46:35,596 - INFO - 127.0.0.1 - - [05/Mar/2025 22:46:35] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:46:35,931 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:36,025 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:36,068 - INFO - \u2705 Joueur 3 - Mission 2 : 39 clics enregistrés.
+2025-03-05 22:46:36,082 - INFO - 127.0.0.1 - - [05/Mar/2025 22:46:36] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:46:36,278 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:36,367 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:36,409 - INFO - \u2705 Joueur 3 - Mission 2 : 42 clics enregistrés.
+2025-03-05 22:46:36,425 - INFO - 127.0.0.1 - - [05/Mar/2025 22:46:36] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:46:36,951 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:37,044 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:37,093 - INFO - \u2705 Joueur 3 - Mission 2 : 45 clics enregistrés.
+2025-03-05 22:46:37,108 - INFO - 127.0.0.1 - - [05/Mar/2025 22:46:37] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:46:37,301 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:37,397 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:37,442 - INFO - \u2705 Joueur 3 - Mission 2 : 48 clics enregistrés.
+2025-03-05 22:46:37,456 - INFO - 127.0.0.1 - - [05/Mar/2025 22:46:37] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:46:37,678 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:37,777 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:37,823 - INFO - \u2705 Joueur 3 - Mission 2 : 51 clics enregistrés.
+2025-03-05 22:46:37,837 - INFO - 127.0.0.1 - - [05/Mar/2025 22:46:37] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:46:38,377 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:38,466 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:38,511 - INFO - \u2705 Joueur 3 - Mission 2 : 54 clics enregistrés.
+2025-03-05 22:46:38,526 - INFO - 127.0.0.1 - - [05/Mar/2025 22:46:38] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:46:38,667 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:38,758 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:38,801 - INFO - \u2705 Joueur 3 - Mission 2 : 57 clics enregistrés.
+2025-03-05 22:46:38,817 - INFO - 127.0.0.1 - - [05/Mar/2025 22:46:38] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:46:39,059 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:39,149 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:39,193 - INFO - \u2705 Joueur 3 - Mission 2 : 60 clics enregistrés.
+2025-03-05 22:46:39,208 - INFO - 127.0.0.1 - - [05/Mar/2025 22:46:39] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:46:40,663 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:40,757 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:40,803 - INFO - \u2705 Joueur 3 - Mission 2 : 63 clics enregistrés.
+2025-03-05 22:46:40,819 - INFO - 127.0.0.1 - - [05/Mar/2025 22:46:40] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:46:40,981 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:41,069 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:41,115 - INFO - \u2705 Joueur 3 - Mission 2 : 66 clics enregistrés.
+2025-03-05 22:46:41,132 - INFO - 127.0.0.1 - - [05/Mar/2025 22:46:41] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:46:41,362 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:41,455 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:41,500 - INFO - \u2705 Joueur 3 - Mission 2 : 69 clics enregistrés.
+2025-03-05 22:46:41,515 - INFO - 127.0.0.1 - - [05/Mar/2025 22:46:41] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:46:41,708 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:41,798 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:41,852 - INFO - \u2705 Joueur 3 - Mission 2 : 72 clics enregistrés.
+2025-03-05 22:46:41,868 - INFO - 127.0.0.1 - - [05/Mar/2025 22:46:41] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:46:42,242 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:42,335 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:42,378 - INFO - \u2705 Joueur 3 - Mission 2 : 75 clics enregistrés.
+2025-03-05 22:46:42,394 - INFO - 127.0.0.1 - - [05/Mar/2025 22:46:42] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:46:42,621 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:42,713 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:42,758 - INFO - \u2705 Joueur 3 - Mission 2 : 78 clics enregistrés.
+2025-03-05 22:46:42,772 - INFO - 127.0.0.1 - - [05/Mar/2025 22:46:42] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:46:42,964 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:43,057 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:43,105 - INFO - \u2705 Joueur 3 - Mission 2 : 81 clics enregistrés.
+2025-03-05 22:46:43,119 - INFO - 127.0.0.1 - - [05/Mar/2025 22:46:43] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:46:43,371 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:43,460 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:43,505 - INFO - \u2705 Joueur 3 - Mission 2 : 84 clics enregistrés.
+2025-03-05 22:46:43,522 - INFO - 127.0.0.1 - - [05/Mar/2025 22:46:43] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:46:43,720 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:43,815 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:43,860 - INFO - \u2705 Joueur 3 - Mission 2 : 87 clics enregistrés.
+2025-03-05 22:46:43,874 - INFO - 127.0.0.1 - - [05/Mar/2025 22:46:43] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:46:44,089 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:44,178 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:44,226 - INFO - \u2705 Joueur 3 - Mission 2 : 90 clics enregistrés.
+2025-03-05 22:46:44,240 - INFO - 127.0.0.1 - - [05/Mar/2025 22:46:44] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:46:44,420 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:44,521 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:44,563 - INFO - \u2705 Joueur 3 - Mission 2 : 93 clics enregistrés.
+2025-03-05 22:46:44,578 - INFO - 127.0.0.1 - - [05/Mar/2025 22:46:44] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:46:45,042 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:45,132 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:45,177 - INFO - \u2705 Joueur 3 - Mission 2 : 96 clics enregistrés.
+2025-03-05 22:46:45,193 - INFO - 127.0.0.1 - - [05/Mar/2025 22:46:45] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:46:45,541 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:45,630 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:45,677 - INFO - \u2705 Joueur 3 - Mission 2 : 99 clics enregistrés.
+2025-03-05 22:46:45,693 - INFO - 127.0.0.1 - - [05/Mar/2025 22:46:45] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:46:45,881 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:45,970 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:46,020 - INFO - \u2705 Joueur 3 - Mission 2 : 102 clics enregistrés.
+2025-03-05 22:46:46,038 - INFO - 127.0.0.1 - - [05/Mar/2025 22:46:46] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:46:46,276 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:46,375 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:46,418 - INFO - \u2705 Joueur 3 - Mission 2 : 105 clics enregistrés.
+2025-03-05 22:46:46,432 - INFO - 127.0.0.1 - - [05/Mar/2025 22:46:46] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:46:47,720 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:47,810 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:47,856 - INFO - \u2705 Joueur 3 - Mission 2 : 108 clics enregistrés.
+2025-03-05 22:46:47,872 - INFO - 127.0.0.1 - - [05/Mar/2025 22:46:47] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:46:48,149 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:48,243 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:48,287 - INFO - \u2705 Joueur 3 - Mission 2 : 111 clics enregistrés.
+2025-03-05 22:46:48,302 - INFO - 127.0.0.1 - - [05/Mar/2025 22:46:48] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:46:48,923 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:49,012 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:49,058 - INFO - \u2705 Joueur 3 - Mission 2 : 114 clics enregistrés.
+2025-03-05 22:46:49,072 - INFO - 127.0.0.1 - - [05/Mar/2025 22:46:49] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:46:49,299 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:49,405 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:49,448 - INFO - \u2705 Joueur 3 - Mission 2 : 117 clics enregistrés.
+2025-03-05 22:46:49,464 - INFO - 127.0.0.1 - - [05/Mar/2025 22:46:49] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:46:49,729 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:49,827 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:49,871 - INFO - \u2705 Joueur 3 - Mission 2 : 120 clics enregistrés.
+2025-03-05 22:46:49,886 - INFO - 127.0.0.1 - - [05/Mar/2025 22:46:49] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:46:50,243 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:50,336 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:50,380 - INFO - \u2705 Joueur 3 - Mission 2 : 123 clics enregistrés.
+2025-03-05 22:46:50,396 - INFO - 127.0.0.1 - - [05/Mar/2025 22:46:50] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:46:50,710 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:50,800 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:50,846 - INFO - \u2705 Joueur 3 - Mission 2 : 126 clics enregistrés.
+2025-03-05 22:46:50,860 - INFO - 127.0.0.1 - - [05/Mar/2025 22:46:50] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:46:51,290 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:51,378 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:51,422 - INFO - \u2705 Joueur 3 - Mission 2 : 129 clics enregistrés.
+2025-03-05 22:46:51,438 - INFO - 127.0.0.1 - - [05/Mar/2025 22:46:51] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:46:51,669 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:51,765 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:51,810 - INFO - \u2705 Joueur 3 - Mission 2 : 132 clics enregistrés.
+2025-03-05 22:46:51,827 - INFO - 127.0.0.1 - - [05/Mar/2025 22:46:51] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:46:52,032 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:52,120 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:52,164 - INFO - \u2705 Joueur 3 - Mission 2 : 135 clics enregistrés.
+2025-03-05 22:46:52,179 - INFO - 127.0.0.1 - - [05/Mar/2025 22:46:52] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:46:52,523 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:52,612 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:52,657 - INFO - \u2705 Joueur 3 - Mission 2 : 138 clics enregistrés.
+2025-03-05 22:46:52,673 - INFO - 127.0.0.1 - - [05/Mar/2025 22:46:52] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:46:52,954 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:53,055 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:53,100 - INFO - \u2705 Joueur 3 - Mission 2 : 141 clics enregistrés.
+2025-03-05 22:46:53,115 - INFO - 127.0.0.1 - - [05/Mar/2025 22:46:53] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:46:53,409 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:53,498 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:53,544 - INFO - \u2705 Joueur 3 - Mission 2 : 144 clics enregistrés.
+2025-03-05 22:46:53,560 - INFO - 127.0.0.1 - - [05/Mar/2025 22:46:53] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:46:53,832 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:53,922 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:53,966 - INFO - \u2705 Joueur 3 - Mission 2 : 147 clics enregistrés.
+2025-03-05 22:46:53,982 - INFO - 127.0.0.1 - - [05/Mar/2025 22:46:53] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:46:54,303 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:54,400 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:54,444 - INFO - \u2705 Joueur 3 - Mission 2 : 150 clics enregistrés.
+2025-03-05 22:46:54,461 - INFO - 127.0.0.1 - - [05/Mar/2025 22:46:54] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:46:54,758 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:54,852 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:54,896 - INFO - \u2705 Joueur 3 - Mission 2 : 153 clics enregistrés.
+2025-03-05 22:46:54,913 - INFO - 127.0.0.1 - - [05/Mar/2025 22:46:54] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:46:55,255 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:55,340 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:55,384 - INFO - \u2705 Joueur 3 - Mission 2 : 156 clics enregistrés.
+2025-03-05 22:46:55,400 - INFO - 127.0.0.1 - - [05/Mar/2025 22:46:55] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:46:55,675 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:55,791 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:55,835 - INFO - \u2705 Joueur 3 - Mission 2 : 159 clics enregistrés.
+2025-03-05 22:46:55,850 - INFO - 127.0.0.1 - - [05/Mar/2025 22:46:55] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:46:56,355 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:56,444 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:56,489 - INFO - \u2705 Joueur 3 - Mission 2 : 162 clics enregistrés.
+2025-03-05 22:46:56,503 - INFO - 127.0.0.1 - - [05/Mar/2025 22:46:56] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:46:56,727 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:56,818 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:56,863 - INFO - \u2705 Joueur 3 - Mission 2 : 165 clics enregistrés.
+2025-03-05 22:46:56,878 - INFO - 127.0.0.1 - - [05/Mar/2025 22:46:56] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:46:57,145 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:57,236 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:57,279 - INFO - \u2705 Joueur 3 - Mission 2 : 168 clics enregistrés.
+2025-03-05 22:46:57,295 - INFO - 127.0.0.1 - - [05/Mar/2025 22:46:57] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:46:57,613 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:57,713 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:57,762 - INFO - \u2705 Joueur 3 - Mission 2 : 171 clics enregistrés.
+2025-03-05 22:46:57,776 - INFO - 127.0.0.1 - - [05/Mar/2025 22:46:57] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:46:58,030 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:58,126 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:58,173 - INFO - \u2705 Joueur 3 - Mission 2 : 174 clics enregistrés.
+2025-03-05 22:46:58,188 - INFO - 127.0.0.1 - - [05/Mar/2025 22:46:58] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:46:58,377 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:58,467 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:58,517 - INFO - \u2705 Joueur 3 - Mission 2 : 177 clics enregistrés.
+2025-03-05 22:46:58,532 - INFO - 127.0.0.1 - - [05/Mar/2025 22:46:58] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:46:58,720 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:58,811 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:58,860 - INFO - \u2705 Joueur 3 - Mission 2 : 180 clics enregistrés.
+2025-03-05 22:46:58,875 - INFO - 127.0.0.1 - - [05/Mar/2025 22:46:58] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:46:59,063 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:59,159 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:59,204 - INFO - \u2705 Joueur 3 - Mission 2 : 183 clics enregistrés.
+2025-03-05 22:46:59,221 - INFO - 127.0.0.1 - - [05/Mar/2025 22:46:59] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:46:59,444 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:59,536 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:59,582 - INFO - \u2705 Joueur 3 - Mission 2 : 186 clics enregistrés.
+2025-03-05 22:46:59,599 - INFO - 127.0.0.1 - - [05/Mar/2025 22:46:59] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:46:59,901 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:46:59,993 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:47:00,038 - INFO - \u2705 Joueur 3 - Mission 2 : 189 clics enregistrés.
+2025-03-05 22:47:00,054 - INFO - 127.0.0.1 - - [05/Mar/2025 22:47:00] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:47:00,525 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:47:00,616 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:47:00,664 - INFO - \u2705 Joueur 3 - Mission 2 : 192 clics enregistrés.
+2025-03-05 22:47:00,680 - INFO - 127.0.0.1 - - [05/Mar/2025 22:47:00] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:47:00,887 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:47:00,990 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:47:01,053 - INFO - \u2705 Joueur 3 - Mission 2 : 195 clics enregistrés.
+2025-03-05 22:47:01,068 - INFO - 127.0.0.1 - - [05/Mar/2025 22:47:01] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:47:01,222 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:47:01,310 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:47:01,628 - INFO - \u2705 Joueur 3 - Mission 2 : 198 clics enregistrés.
+2025-03-05 22:47:01,643 - INFO - 127.0.0.1 - - [05/Mar/2025 22:47:01] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:47:01,672 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:47:01,769 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:47:01,814 - INFO - \u2705 Joueur 3 - Mission 2 : 201 clics enregistrés.
+2025-03-05 22:47:01,831 - INFO - 127.0.0.1 - - [05/Mar/2025 22:47:01] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:47:02,096 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:47:02,197 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:47:02,244 - INFO - \u2705 Joueur 3 - Mission 2 : 204 clics enregistrés.
+2025-03-05 22:47:02,261 - INFO - 127.0.0.1 - - [05/Mar/2025 22:47:02] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:47:02,585 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:47:02,682 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:47:02,728 - INFO - \u2705 Joueur 3 - Mission 2 : 207 clics enregistrés.
+2025-03-05 22:47:02,745 - INFO - 127.0.0.1 - - [05/Mar/2025 22:47:02] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:47:03,026 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:47:03,120 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:47:03,165 - INFO - \u2705 Joueur 3 - Mission 2 : 210 clics enregistrés.
+2025-03-05 22:47:03,179 - INFO - 127.0.0.1 - - [05/Mar/2025 22:47:03] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:47:03,538 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:47:03,632 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:47:03,690 - INFO - \u2705 Joueur 3 - Mission 2 : 213 clics enregistrés.
+2025-03-05 22:47:03,706 - INFO - 127.0.0.1 - - [05/Mar/2025 22:47:03] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:47:03,987 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:47:04,086 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:47:04,136 - INFO - \u2705 Joueur 3 - Mission 2 : 216 clics enregistrés.
+2025-03-05 22:47:04,151 - INFO - 127.0.0.1 - - [05/Mar/2025 22:47:04] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:47:04,310 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:47:04,401 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:47:04,448 - INFO - \u2705 Joueur 3 - Mission 2 : 219 clics enregistrés.
+2025-03-05 22:47:04,465 - INFO - 127.0.0.1 - - [05/Mar/2025 22:47:04] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:47:04,766 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:47:04,859 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:47:04,906 - INFO - \u2705 Joueur 3 - Mission 2 : 222 clics enregistrés.
+2025-03-05 22:47:04,922 - INFO - 127.0.0.1 - - [05/Mar/2025 22:47:04] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:47:05,216 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:47:05,318 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:47:05,364 - INFO - \u2705 Joueur 3 - Mission 2 : 225 clics enregistrés.
+2025-03-05 22:47:05,379 - INFO - 127.0.0.1 - - [05/Mar/2025 22:47:05] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:47:05,601 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:47:05,701 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:47:05,751 - INFO - \u2705 Joueur 3 - Mission 2 : 228 clics enregistrés.
+2025-03-05 22:47:05,767 - INFO - 127.0.0.1 - - [05/Mar/2025 22:47:05] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:47:06,057 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:47:06,158 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:47:06,213 - INFO - \u2705 Joueur 3 - Mission 2 : 231 clics enregistrés.
+2025-03-05 22:47:06,232 - INFO - 127.0.0.1 - - [05/Mar/2025 22:47:06] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:47:06,493 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:47:06,590 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:47:06,644 - INFO - \u2705 Joueur 3 - Mission 2 : 234 clics enregistrés.
+2025-03-05 22:47:06,663 - INFO - 127.0.0.1 - - [05/Mar/2025 22:47:06] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:47:06,963 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:47:07,060 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:47:07,117 - INFO - \u2705 Joueur 3 - Mission 2 : 237 clics enregistrés.
+2025-03-05 22:47:07,133 - INFO - 127.0.0.1 - - [05/Mar/2025 22:47:07] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:47:07,333 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:47:07,427 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:47:07,472 - INFO - \u2705 Joueur 3 - Mission 2 : 240 clics enregistrés.
+2025-03-05 22:47:07,488 - INFO - 127.0.0.1 - - [05/Mar/2025 22:47:07] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:47:07,689 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:47:07,797 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:47:07,840 - INFO - \u2705 Joueur 3 - Mission 2 : 243 clics enregistrés.
+2025-03-05 22:47:07,856 - INFO - 127.0.0.1 - - [05/Mar/2025 22:47:07] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:47:08,071 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:47:08,163 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:47:08,210 - INFO - \u2705 Joueur 3 - Mission 2 : 246 clics enregistrés.
+2025-03-05 22:47:08,227 - INFO - 127.0.0.1 - - [05/Mar/2025 22:47:08] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:47:08,526 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:47:08,619 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:47:08,668 - INFO - \u2705 Joueur 3 - Mission 2 : 249 clics enregistrés.
+2025-03-05 22:47:08,684 - INFO - 127.0.0.1 - - [05/Mar/2025 22:47:08] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:47:08,904 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:47:09,002 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:47:09,048 - INFO - \u2705 Joueur 3 - Mission 2 : 252 clics enregistrés.
+2025-03-05 22:47:09,063 - INFO - 127.0.0.1 - - [05/Mar/2025 22:47:09] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:47:09,222 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:47:09,315 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:47:09,361 - INFO - \u2705 Joueur 3 - Mission 2 : 255 clics enregistrés.
+2025-03-05 22:47:09,377 - INFO - 127.0.0.1 - - [05/Mar/2025 22:47:09] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:47:09,577 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:47:09,667 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:47:09,713 - INFO - \u2705 Joueur 3 - Mission 2 : 258 clics enregistrés.
+2025-03-05 22:47:09,729 - INFO - 127.0.0.1 - - [05/Mar/2025 22:47:09] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:47:10,094 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:47:10,187 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:47:10,232 - INFO - \u2705 Joueur 3 - Mission 2 : 261 clics enregistrés.
+2025-03-05 22:47:10,246 - INFO - 127.0.0.1 - - [05/Mar/2025 22:47:10] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:47:10,517 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:47:10,609 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:47:10,655 - INFO - \u2705 Joueur 3 - Mission 2 : 264 clics enregistrés.
+2025-03-05 22:47:10,671 - INFO - 127.0.0.1 - - [05/Mar/2025 22:47:10] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:47:11,033 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:47:11,134 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:47:11,178 - INFO - \u2705 Joueur 3 - Mission 2 : 267 clics enregistrés.
+2025-03-05 22:47:11,194 - INFO - 127.0.0.1 - - [05/Mar/2025 22:47:11] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:47:11,513 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:47:11,602 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:47:11,657 - INFO - \u2705 Joueur 3 - Mission 2 : 270 clics enregistrés.
+2025-03-05 22:47:11,672 - INFO - 127.0.0.1 - - [05/Mar/2025 22:47:11] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:47:11,996 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:47:12,087 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:47:12,133 - INFO - \u2705 Joueur 3 - Mission 2 : 273 clics enregistrés.
+2025-03-05 22:47:12,148 - INFO - 127.0.0.1 - - [05/Mar/2025 22:47:12] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:47:12,494 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:47:12,588 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:47:12,633 - INFO - \u2705 Joueur 3 - Mission 2 : 276 clics enregistrés.
+2025-03-05 22:47:12,649 - INFO - 127.0.0.1 - - [05/Mar/2025 22:47:12] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:47:12,966 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:47:13,077 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:47:13,130 - INFO - \u2705 Joueur 3 - Mission 2 : 279 clics enregistrés.
+2025-03-05 22:47:13,147 - INFO - 127.0.0.1 - - [05/Mar/2025 22:47:13] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:47:13,457 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:47:13,548 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:47:13,592 - INFO - \u2705 Joueur 3 - Mission 2 : 282 clics enregistrés.
+2025-03-05 22:47:13,608 - INFO - 127.0.0.1 - - [05/Mar/2025 22:47:13] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:47:13,939 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:47:14,028 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:47:14,071 - INFO - \u2705 Joueur 3 - Mission 2 : 285 clics enregistrés.
+2025-03-05 22:47:14,087 - INFO - 127.0.0.1 - - [05/Mar/2025 22:47:14] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:47:14,276 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:47:14,364 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:47:14,410 - INFO - \u2705 Joueur 3 - Mission 2 : 288 clics enregistrés.
+2025-03-05 22:47:14,425 - INFO - 127.0.0.1 - - [05/Mar/2025 22:47:14] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:47:15,420 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:47:15,523 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:47:15,568 - INFO - \u2705 Joueur 3 - Mission 2 : 291 clics enregistrés.
+2025-03-05 22:47:15,584 - INFO - 127.0.0.1 - - [05/Mar/2025 22:47:15] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:47:15,776 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:47:15,864 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:47:15,909 - INFO - \u2705 Joueur 3 - Mission 2 : 294 clics enregistrés.
+2025-03-05 22:47:15,924 - INFO - 127.0.0.1 - - [05/Mar/2025 22:47:15] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:47:16,192 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:47:16,288 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:47:16,334 - INFO - \u2705 Joueur 3 - Mission 2 : 297 clics enregistrés.
+2025-03-05 22:47:16,351 - INFO - 127.0.0.1 - - [05/Mar/2025 22:47:16] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:47:16,648 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:47:16,741 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:47:16,784 - INFO - \u2705 Joueur 3 - Mission 2 : 300 clics enregistrés.
+2025-03-05 22:47:16,876 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:47:17,035 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:47:17,059 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:47:17,076 - ERROR - \U0001f6ab Mission 2 n'est pas en cours pour le joueur 3. Statut actuel: 4
+2025-03-05 22:47:17,077 - INFO - 127.0.0.1 - - [05/Mar/2025 22:47:17] "[31m[1mPATCH /player_missions/3/increment HTTP/1.1[0m" 400 -
+2025-03-05 22:47:17,119 - INFO - 127.0.0.1 - - [05/Mar/2025 22:47:17] "PATCH /player_missions/3/increment HTTP/1.1" 200 -
+2025-03-05 22:47:17,495 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:47:17,509 - ERROR - \U0001f6ab Mission 2 n'est pas en cours pour le joueur 3. Statut actuel: 4
+2025-03-05 22:47:17,510 - INFO - 127.0.0.1 - - [05/Mar/2025 22:47:17] "[31m[1mPATCH /player_missions/3/increment HTTP/1.1[0m" 400 -
+2025-03-05 22:47:17,975 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:47:17,993 - ERROR - \U0001f6ab Mission 2 n'est pas en cours pour le joueur 3. Statut actuel: 4
+2025-03-05 22:47:17,994 - INFO - 127.0.0.1 - - [05/Mar/2025 22:47:17] "[31m[1mPATCH /player_missions/3/increment HTTP/1.1[0m" 400 -
+2025-03-05 22:47:23,139 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:47:23,155 - INFO - 127.0.0.1 - - [05/Mar/2025 22:47:23] "GET /player_missions/3 HTTP/1.1" 200 -
+2025-03-05 22:48:11,123 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:48:11,140 - INFO - 127.0.0.1 - - [05/Mar/2025 22:48:11] "GET /upgrades/3 HTTP/1.1" 200 -
+2025-03-05 22:48:19,725 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:48:19,740 - INFO - 127.0.0.1 - - [05/Mar/2025 22:48:19] "GET /players/3 HTTP/1.1" 200 -
+2025-03-05 22:48:26,416 - INFO - 127.0.0.1 - - [05/Mar/2025 22:48:26] "[31m[1mPATCH /upgrades/3/buy HTTP/1.1[0m" 405 -
+2025-03-05 22:49:16,798 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:49:16,814 - INFO - \U0001f50d Vérification : {'id_level': 1, 'level': 1, 'cost': 100, 'boost_value': 2, 'id_upgrade': 1, 'purchased': 1}
+2025-03-05 22:49:16,814 - INFO - \U0001f50d Vérification : {'id_level': 2, 'level': 2, 'cost': 300, 'boost_value': 5, 'id_upgrade': 1, 'purchased': 0}
+2025-03-05 22:49:16,814 - INFO - \U0001f50d Vérification : {'id_level': 3, 'level': 3, 'cost': 700, 'boost_value': 10, 'id_upgrade': 1, 'purchased': 0}
+2025-03-05 22:49:16,883 - INFO - \u2705 Le joueur 3 a acheté l'upgrade 1 (Niveau 2).
+2025-03-05 22:49:16,883 - INFO - 127.0.0.1 - - [05/Mar/2025 22:49:16] "POST /upgrades/3/buy HTTP/1.1" 200 -
+2025-03-05 22:49:20,473 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:49:20,487 - INFO - 127.0.0.1 - - [05/Mar/2025 22:49:20] "GET /players/3 HTTP/1.1" 200 -
+2025-03-05 22:49:25,944 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:49:25,959 - INFO - 127.0.0.1 - - [05/Mar/2025 22:49:25] "GET /upgrades/3 HTTP/1.1" 200 -
+2025-03-05 22:49:38,814 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:49:38,829 - INFO - \U0001f50d Vérification : {'id_level': 1, 'level': 1, 'cost': 100, 'boost_value': 2, 'id_upgrade': 1, 'purchased': 1}
+2025-03-05 22:49:38,829 - INFO - \U0001f50d Vérification : {'id_level': 2, 'level': 2, 'cost': 300, 'boost_value': 5, 'id_upgrade': 1, 'purchased': 1}
+2025-03-05 22:49:38,829 - INFO - \U0001f50d Vérification : {'id_level': 3, 'level': 3, 'cost': 700, 'boost_value': 10, 'id_upgrade': 1, 'purchased': 0}
+2025-03-05 22:49:38,892 - INFO - \u2705 Le joueur 3 a acheté l'upgrade 1 (Niveau 3).
+2025-03-05 22:49:38,892 - INFO - 127.0.0.1 - - [05/Mar/2025 22:49:38] "POST /upgrades/3/buy HTTP/1.1" 200 -
+2025-03-05 22:49:42,296 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:49:42,311 - INFO - 127.0.0.1 - - [05/Mar/2025 22:49:42] "GET /players/3 HTTP/1.1" 200 -
+2025-03-05 22:49:46,942 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 22:49:46,958 - INFO - 127.0.0.1 - - [05/Mar/2025 22:49:46] "GET /upgrades/3 HTTP/1.1" 200 -

@@ -77,16 +77,17 @@ class UpgradeService:
             return False
 
         try:
-            with connection.cursor() as cursor:
+            with connection.cursor(pymysql.cursors.DictCursor) as cursor:
                 # Récupérer le niveau actuel de l'amélioration pour le joueur
                 sql = """
-                SELECT ul.id_level, ul.level, ul.cost, ul.boost_value, u.id_upgrade
-                FROM upgrade_level ul
-                JOIN upgrade u ON ul.id_upgrade = u.id_upgrade
-                LEFT JOIN player_upgrade pu ON ul.id_level = pu.id_level AND pu.id_player = %s
-                WHERE u.id_upgrade = %s
-                ORDER BY ul.level ASC
-                """
+                   SELECT ul.id_level, ul.level, ul.cost, ul.boost_value, u.id_upgrade,
+                          (pu.id_player IS NOT NULL) AS purchased
+                   FROM upgrade_level ul
+                   JOIN upgrade u ON ul.id_upgrade = u.id_upgrade
+                   LEFT JOIN player_upgrade pu ON ul.id_level = pu.id_level AND pu.id_player = %s
+                   WHERE u.id_upgrade = %s
+                   ORDER BY ul.level ASC
+                   """
                 cursor.execute(sql, (player_id, upgrade_id))
                 levels = cursor.fetchall()
 
@@ -94,13 +95,14 @@ class UpgradeService:
                     log_error(f"❌ Aucune amélioration trouvée avec l'ID {upgrade_id}")
                     return False
 
-                # Déterminer le niveau suivant disponible
+                # Déterminer le niveau actuel et le niveau suivant disponible
                 current_level = None
                 for level in levels:
-                    if level[-1]:  # Vérifie si l'upgrade est déjà achetée
-                        current_level = level[1]  # Niveau actuel
+                    log_info(f"🔍 Vérification : {level}")
+                    if level["purchased"]:  # Vérifie si le joueur possède cette amélioration
+                        current_level = level["level"]
 
-                next_level = next((lvl for lvl in levels if lvl[1] == (current_level or 0) + 1), None)
+                next_level = next((lvl for lvl in levels if lvl["level"] == (current_level or 0) + 1), None)
 
                 if not next_level:
                     log_info(f"🚫 Le joueur {player_id} a déjà le niveau max de l'upgrade {upgrade_id}.")
@@ -111,22 +113,23 @@ class UpgradeService:
                 cursor.execute(sql, (player_id,))
                 player = cursor.fetchone()
 
-                if not player or player[0] < next_level[2]:
+                if not player or player["money"] < next_level["cost"]:
                     log_info(f"🚫 Le joueur {player_id} n'a pas assez d'argent pour acheter l'upgrade {upgrade_id}.")
                     return False
 
                 # Déduire l'argent et ajouter l'amélioration
                 sql = "UPDATE player SET money = money - %s WHERE id_player = %s"
-                cursor.execute(sql, (next_level[2], player_id))
+                cursor.execute(sql, (next_level["cost"], player_id))
 
                 sql = "INSERT INTO player_upgrade (id_player, id_level) VALUES (%s, %s)"
-                cursor.execute(sql, (player_id, next_level[0]))
+                cursor.execute(sql, (player_id, next_level["id_level"]))
 
                 connection.commit()
-                log_info(f"✅ Le joueur {player_id} a acheté l'upgrade {upgrade_id} (Niveau {next_level[1]}).")
+                log_info(f"✅ Le joueur {player_id} a acheté l'upgrade {upgrade_id} (Niveau {next_level['level']}).")
                 return True
         except pymysql.MySQLError as e:
             log_error(f"❌ Erreur lors de l'achat de l'amélioration : {e}")
             return False
         finally:
             connection.close()
+
