@@ -3,44 +3,42 @@ from services.upgrade_service import UpgradeService
 
 upgrade_controller = Blueprint('upgrade', __name__, url_prefix='/upgrades')
 
-# 🔹 1️⃣ Récupérer une amélioration par ID (GET /upgrades/{upgrade_id})
-@upgrade_controller.route('/<int:upgrade_id>', methods=['GET'])
-def get_upgrade(upgrade_id: int):
-    """
-    Retourne les informations d'une amélioration par son ID.
-    """
-    try:
-        upgrade = UpgradeService.get_upgrade(upgrade_id)
-        if upgrade:
-            return jsonify({"status": "success", "data": upgrade}), 200
-        return jsonify({"status": "error", "message": "Upgrade not found"}), 404
-    except Exception as e:
-        return jsonify({"status": "error", "message": f"An error occurred while retrieving the upgrade: {str(e)}"}), 500
 
-
-# 🔹 2️⃣ Récupérer toutes les améliorations disponibles (GET /upgrades/)
-@upgrade_controller.route('/', methods=['GET'])
-def get_all_upgrades():
+@upgrade_controller.route('/<int:player_id>/total_click_bonus', methods=['GET'])
+def get_total_click_bonus(player_id):
     """
-    Retourne la liste de toutes les améliorations disponibles.
+    Récupère le bonus total de clics d'un joueur en fonction de ses améliorations.
+    Utilisé dans la gameloop du player_mission_service.py.
     """
-    try:
-        upgrades = UpgradeService.get_all_upgrades()
-        return jsonify({"status": "success", "data": upgrades}), 200
-    except Exception as e:
-        return jsonify({"status": "error", "message": f"An error occurred while retrieving upgrades: {str(e)}"}), 500
+    total_bonus = UpgradeService.get_total_click_bonus(player_id)
+    return jsonify({"total_click_bonus": total_bonus}), 200
 
 
 @upgrade_controller.route('/<int:player_id>', methods=['GET'])
-def get_player_upgrades(player_id):
-    """Récupère les améliorations achetées par un joueur."""
-    return jsonify({"status": "success", "data": UpgradeService.get_player_upgrades(player_id)})
+def get_all_upgrades(player_id):
+    """
+    Récupère toutes les améliorations disponibles et le niveau actuel du joueur.
+    Permet au frontend d'afficher les upgrades achetables ou déjà possédées.
+    """
+    upgrades = UpgradeService.get_all_upgrades(player_id)
+    if upgrades:
+        return jsonify(upgrades), 200
+    return jsonify({"error": "Aucune amélioration trouvée"}), 404
 
-@upgrade_controller.route('/<int:player_id>/purchase', methods=['POST'])
-def purchase_upgrade(player_id):
-    """Permet à un joueur d'acheter une amélioration."""
-    data = request.get_json()
-    if "upgrade_level_id" not in data:
-        return jsonify({"status": "error", "message": "Missing upgrade_level_id"}), 400
-    return jsonify(UpgradeService.purchase_upgrade(player_id, data["upgrade_level_id"]))
 
+@upgrade_controller.route('/<int:player_id>/buy', methods=['POST'])
+def buy_upgrade(player_id):
+    """
+    Permet d'acheter une amélioration pour le joueur.
+    Vérifie que le joueur a assez d'argent et que l'amélioration peut être achetée.
+    """
+    data = request.json
+    upgrade_id = data.get('upgrade_id')
+
+    if not upgrade_id:
+        return jsonify({"error": "L'ID de l'amélioration est requis"}), 400
+
+    success = UpgradeService.buy_upgrade(player_id, upgrade_id)
+    if success:
+        return jsonify({"message": "Amélioration achetée avec succès"}), 200
+    return jsonify({"error": "Impossible d'acheter cette amélioration"}), 400

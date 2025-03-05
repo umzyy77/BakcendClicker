@@ -1,48 +1,72 @@
 from flask import Blueprint, request, jsonify
-
 from services.player_mission_service import PlayerMissionService
 
-# -----------------------------
-# 🔹 Player Mission Controller
-# -----------------------------
 player_mission_controller = Blueprint('player_mission', __name__, url_prefix='/player_missions')
+
+@player_mission_controller.route('/<int:player_id>', methods=['GET'])
+def get_missions_for_player(player_id):
+    """
+    Récupère toutes les missions d'un joueur avec leur statut.
+    """
+    missions = PlayerMissionService.get_missions_for_player(player_id)
+    if missions:
+        return jsonify(missions), 200
+    return jsonify({"error": "Aucune mission trouvée pour ce joueur"}), 404
+
+
+@player_mission_controller.route('/<int:player_id>/first_unlocked', methods=['GET'])
+def get_first_unlocked_mission(player_id):
+    """
+    Récupère la première mission déverrouillée d'un joueur.
+    """
+    mission_id = PlayerMissionService.get_first_unlocked_mission(player_id)
+    if mission_id:
+        return jsonify({"first_unlocked_mission": mission_id}), 200
+    return jsonify({"error": "Aucune mission déverrouillée trouvée"}), 404
+
 
 @player_mission_controller.route('/<int:player_id>/start', methods=['POST'])
 def start_mission(player_id):
-    """Assigne une mission à un joueur."""
-    data = request.get_json()
-    if "mission_id" not in data:
-        return jsonify({"status": "error", "message": "Missing mission_id"}), 400
-    return jsonify(PlayerMissionService.start_mission(player_id, data["mission_id"]))
+    """
+    Démarre une mission pour le joueur.
+    """
+    data = request.json
+    mission_id = data.get('mission_id')
 
-@player_mission_controller.route('/<int:player_id>/complete', methods=['POST'])
-def complete_mission(player_id):
-    """Marque une mission comme complétée."""
-    data = request.get_json()
-    if "mission_id" not in data:
-        return jsonify({"status": "error", "message": "Missing mission_id"}), 400
-    return jsonify(PlayerMissionService.complete_mission(player_id, data["mission_id"]))
+    if not mission_id:
+        return jsonify({"error": "L'ID de la mission est requis"}), 400
 
-@player_mission_controller.route('/<int:player_id>/mission', methods=['GET'])
-def get_player_missions(player_id):
-    """Récupère les missions d'un joueur."""
-    return jsonify({"status": "success", "data": PlayerMissionService.get_player_missions(player_id)})
+    success = PlayerMissionService.start_mission(player_id, mission_id)
+    if success:
+        return jsonify({"message": "Mission démarrée avec succès"}), 200
+    return jsonify({"error": "Impossible de démarrer la mission"}), 400
 
-@player_mission_controller.route('/<int:player_id>/mission/<int:mission_id>', methods=['GET'])
-def get_player_mission(player_id, mission_id):
-    """Récupère une mission spécifique d'un joueur."""
-    mission = PlayerMissionService.get_player_mission(player_id, mission_id)
-    return jsonify({"status": "success", "data": mission}) if mission else jsonify({"status": "error", "message": "Mission not found"}), 404
+@player_mission_controller.route('/<int:player_id>/newly_unlocked', methods=['GET'])
+def check_newly_unlocked_mission(player_id):
+    """
+    Vérifie si une nouvelle mission a été débloquée pour un joueur.
+    """
+    mission_status = PlayerMissionService.check_newly_unlocked_mission(player_id)
+    if mission_status is not None:
+        return jsonify(mission_status), 200
+    return jsonify({"error": "Impossible de vérifier les nouvelles missions"}), 500
 
-@player_mission_controller.route('/<int:player_id>/assign', methods=['POST'])
-def assign_mission(player_id):
-    """Assigne une mission spécifique à un joueur avec un statut donné."""
-    data = request.get_json()
-    if "mission_id" not in data or "status_id" not in data:
-        return jsonify({"status": "error", "message": "Missing mission_id or status_id"}), 400
-    return jsonify(PlayerMissionService.assign_mission_to_player(player_id, data["mission_id"], data["status_id"]))
 
-@player_mission_controller.route('/<int:player_id>/in_progress', methods=['GET'])
-def get_player_in_progress_missions(player_id):
-    """Récupère toutes les missions en cours d'un joueur."""
-    return jsonify({"status": "success", "data": PlayerMissionService.get_player_in_progress_missions(player_id)})
+
+@player_mission_controller.route('/<int:player_id>/increment', methods=['PATCH'])
+def increment_clicks(player_id):
+    """
+    Incrémente les clics d'une mission en cours et vérifie la complétion.
+    """
+    data = request.json
+    mission_id = data.get('mission_id')
+
+    if not mission_id:
+        return jsonify({"error": "L'ID de la mission est requis"}), 400
+
+    success = PlayerMissionService.increment_clicks(player_id, mission_id)
+    if success:
+        return jsonify({"message": "Clic enregistré avec succès"}), 200
+    return jsonify({"error": "Impossible d'incrémenter les clics"}), 400
+
+

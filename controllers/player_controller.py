@@ -4,34 +4,74 @@ from services.player_service import PlayerService
 
 player_controller = Blueprint('player', __name__, url_prefix='/players')
 
+@player_controller.route('', methods=['POST'])
+def create_player():
+    """
+    Crée un nouveau joueur avec un nom d'utilisateur.
+    """
+    data = request.json
+    username = data.get('username')
+
+    if not username:
+        return jsonify({"error": "Le nom d'utilisateur est requis"}), 400
+
+    player_id = PlayerService.create_player(username)
+    if player_id:
+        return jsonify({"message": "Joueur créé avec succès", "player_id": player_id}), 201
+    return jsonify({"error": "Échec de la création du joueur"}), 500
+
+
 @player_controller.route('/<int:player_id>', methods=['GET'])
 def get_player(player_id):
-    """Récupère les informations d'un joueur."""
+    """
+    Récupère les informations d'un joueur.
+    """
     player = PlayerService.get_player(player_id)
-    return jsonify({"status": "success", "data": player}) if player else jsonify({"status": "error", "message": "Player not found"}), 404
+    if player:
+        return jsonify(player), 200
+    return jsonify({"error": "Joueur non trouvé"}), 404
 
-@player_controller.route('/', methods=['POST'])
-def create_player():
-    """Crée un nouveau joueur."""
-    data = request.get_json()
-    if not data or "username" not in data:
-        return jsonify({"status": "error", "message": "Missing username"}), 400
-    player = PlayerService.create_player(data["username"])
-    return jsonify({"status": "success", "data": player}), 201 if player else jsonify({"status": "error", "message": "Failed to create player"}), 500
-
-@player_controller.route('/<int:player_id>/click', methods=['POST'])
-def increment_hacking_power(player_id):
-    """Augmente la puissance de hacking d'un joueur."""
-    updated_player = PlayerService.increment_hacking_power(player_id)
-    return jsonify({"status": "success", "data": updated_player}) if updated_player else jsonify({"status": "error", "message": "Player not found"}), 404
 
 @player_controller.route('/<int:player_id>', methods=['DELETE'])
 def delete_player(player_id):
-    """Supprime un joueur."""
-    return jsonify({"status": "success", "message": "Player deleted"}) if PlayerService.delete_player(player_id) else jsonify({"status": "error", "message": "Player not found"}), 404
+    """
+    Supprime un joueur.
+    """
+    success = PlayerService.delete_player(player_id)
+    if success:
+        return jsonify({"message": "Joueur supprimé avec succès"}), 200
+    return jsonify({"error": "Impossible de supprimer le joueur"}), 400
 
-@player_controller.route('/<int:player_id>/stats', methods=['GET'])
-def get_player_stats(player_id):
-    """Récupère les statistiques du joueur."""
-    stats = PlayerService.get_player_stats(player_id)
-    return jsonify({"status": "success", "data": stats}) if stats else jsonify({"status": "error", "message": "Stats not found"}), 404
+
+@player_controller.route('/<int:player_id>/money', methods=['PATCH'])
+def update_player_money(player_id):
+    """
+    Met à jour l'argent du joueur.
+    """
+    data = request.json
+    amount = data.get('amount')
+
+    if amount is None:
+        return jsonify({"error": "Montant requis"}), 400
+
+    success = PlayerService.update_player_money(player_id, amount)
+    if success:
+        return jsonify({"message": "Argent mis à jour avec succès"}), 200
+    return jsonify({"error": "Impossible de mettre à jour l'argent"}), 400
+
+
+@player_controller.route('/<int:player_id>/hacking_power', methods=['PATCH'])
+def update_hacking_power(player_id):
+    """
+    Met à jour la puissance de hacking du joueur.
+    """
+    data = request.json
+    power = data.get('power')
+
+    if power is None:
+        return jsonify({"error": "Valeur de hacking power requise"}), 400
+
+    success = PlayerService.update_hacking_power(player_id, power)
+    if success:
+        return jsonify({"message": "Puissance de hacking mise à jour avec succès"}), 200
+    return jsonify({"error": "Impossible de mettre à jour la puissance de hacking"}), 400

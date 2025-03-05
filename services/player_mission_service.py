@@ -125,6 +125,8 @@ class PlayerMissionService:
         finally:
             connection.close()
 
+
+
     @staticmethod
     def assign_next_mission(player_id: int, mission_id: int):
         """
@@ -162,6 +164,15 @@ class PlayerMissionService:
                 cursor.execute(sql, (player_id, next_mission_id))
                 connection.commit()
 
+                # 🚀 Enregistrer la mission débloquée dans player_progress
+                sql = """
+                           INSERT INTO player_progress (id_player, last_unlocked_mission) 
+                           VALUES (%s, %s)
+                           ON DUPLICATE KEY UPDATE last_unlocked_mission = %s
+                           """
+                cursor.execute(sql, (player_id, next_mission_id, next_mission_id))
+                connection.commit()
+
                 return cursor.rowcount > 0
         except pymysql.MySQLError as e:
             log_error(f"❌ Erreur lors du déverrouillage de la prochaine mission : {e}")
@@ -169,6 +180,39 @@ class PlayerMissionService:
         finally:
             connection.close()
 
+    @staticmethod
+    def check_newly_unlocked_mission(player_id: int):
+        """
+        Vérifie si une mission vient juste d'être débloquée et supprime l'info après récupération.
+        """
+        connection = get_db_connection()
+        if not connection:
+            return None
+
+        try:
+            with connection.cursor(pymysql.cursors.DictCursor) as cursor:
+                # Récupérer l'ID de la dernière mission débloquée
+                sql = "SELECT last_unlocked_mission FROM player_progress WHERE id_player = %s"
+                cursor.execute(sql, (player_id,))
+                result = cursor.fetchone()
+
+                if result and result["last_unlocked_mission"]:
+                    mission_id = result["last_unlocked_mission"]
+
+                    # Supprimer l'info après récupération pour éviter que l'animation se rejoue
+                    sql = "UPDATE player_progress SET last_unlocked_mission = NULL WHERE id_player = %s"
+                    cursor.execute(sql, (player_id,))
+                    connection.commit()
+
+                    return {"id_mission": mission_id, "just_unlocked": True}
+
+                return {"just_unlocked": False}
+
+        except pymysql.MySQLError as e:
+            log_error(f"❌ Erreur lors de la vérification des nouvelles missions débloquées : {e}")
+            return None
+        finally:
+            connection.close()
 
     @staticmethod
     def increment_clicks(player_id: int, mission_id: int):

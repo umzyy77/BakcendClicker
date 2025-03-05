@@ -88,6 +88,13 @@ CREATE TABLE `player_mission` (
   CONSTRAINT fk_player_mission_status FOREIGN KEY (`id_status`) REFERENCES `status`(`id_status`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+CREATE TABLE player_progress (
+    id_player INT NOT NULL PRIMARY KEY,
+    last_unlocked_mission INT NULL,
+    FOREIGN KEY (id_player) REFERENCES player(id_player) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
 -- ✅ Insertion des données de base
 
 -- 🟢 Difficulté des missions avec clics requis
