@@ -1,88 +1,77 @@
-from flask import Blueprint, jsonify, request, Response
+from flask import Blueprint, request, jsonify
+
 from services.player_service import PlayerService
 
 player_controller = Blueprint('player', __name__, url_prefix='/players')
 
-@player_controller.route('/', methods=['POST'])
-def create_player() -> tuple[Response, int]:
+@player_controller.route('', methods=['POST'])
+def create_player():
     """
-    Ajoute un nouveau joueur.
-    Exemple : POST /players/
-    Body JSON attendu : { "pseudo": "NomDuJoueur", "id_enemy": 1 }
+    Crée un nouveau joueur avec un nom d'utilisateur.
     """
-    data = request.get_json()
-    if not data or "pseudo" not in data or "id_enemy" not in data:
-        return jsonify({"error": "Missing pseudo or id_enemy"}), 400
+    data = request.json
+    username = data.get('username')
 
-    new_player = PlayerService.create_player(data["pseudo"], data["id_enemy"])
-    return jsonify(new_player), 201
+    if not username:
+        return jsonify({"error": "Le nom d'utilisateur est requis"}), 400
+
+    player_id = PlayerService.create_player(username)
+    if player_id:
+        return jsonify({"message": "Joueur créé avec succès", "player_id": player_id}), 201
+    return jsonify({"error": "Échec de la création du joueur"}), 500
 
 
 @player_controller.route('/<int:player_id>', methods=['GET'])
-def get_player(player_id: int) -> tuple[Response, int]:
+def get_player(player_id):
     """
-    Retourne les informations d'un joueur.
-    Exemple : GET /players/1
+    Récupère les informations d'un joueur.
     """
     player = PlayerService.get_player(player_id)
-
     if player:
         return jsonify(player), 200
-    else:
-        return jsonify({'error': 'Player not found'}), 404  # ✅ Gère proprement les joueurs inexistants
+    return jsonify({"error": "Joueur non trouvé"}), 404
 
-
-@player_controller.route('/<int:player_id>/click', methods=['POST'])
-def click(player_id: int) -> tuple[Response, int]:
-    """
-    Incrémente l'expérience du joueur en simulant un clic.
-    Exemple : POST /players/1/click
-    """
-    new_data = PlayerService.increment_clicks(player_id)
-
-    if new_data:  # ✅ Vérifie si l'XP a été mis à jour correctement
-        return jsonify(new_data), 200
-    else:
-        return jsonify({'error': 'Player not found'}), 404  # ✅ Gère proprement les joueurs inexistants
-
-
-@player_controller.route('/<int:player_id>/buy', methods=['POST'])
-def buy_enhancement(player_id: int) -> tuple[Response, int]:
-    """
-    Permet à un joueur d'acheter une amélioration.
-    Exemple : POST /players/1/buy
-    Body JSON attendu : { "enhancement_id": 2 }
-    """
-    data = request.get_json()
-    enhancement_id = data.get('enhancement_id')
-
-    if enhancement_id is None:
-        return jsonify({'error': 'Missing enhancement_id'}), 400  # ✅ Mauvaise requête
-
-    result = PlayerService.buy_enhancement(player_id, enhancement_id)
-
-    if result is None:  # ✅ Vérifie si le joueur ou l'amélioration n'existe pas
-        return jsonify({'error': 'Player or enhancement not found'}), 404  # ✅ Retourne 404 Not Found
-
-    if "error" in result:
-        status_code = 400 if result["error"] == "Not enough experience to buy this enhancement" else 404
-        return jsonify(result), status_code  # ✅ Retourne le bon code HTTP (400 ou 404)
-
-    return jsonify(result), 200  # ✅ Si tout est bon, retour en 200
 
 @player_controller.route('/<int:player_id>', methods=['DELETE'])
-def delete_player(player_id: int) -> tuple[Response, int]:
+def delete_player(player_id):
     """
-    Supprime un joueur par son ID.
-    Exemple : DELETE /players/1
+    Supprime un joueur.
     """
     success = PlayerService.delete_player(player_id)
-
     if success:
-        return jsonify({"message": "Player deleted"}), 200
-    else:
-        return jsonify({"error": "Player not found"}), 404  # ✅ Retourne 404 si le joueur n'existe pas
+        return jsonify({"message": "Joueur supprimé avec succès"}), 200
+    return jsonify({"error": "Impossible de supprimer le joueur"}), 400
 
 
+@player_controller.route('/<int:player_id>/money', methods=['PATCH'])
+def update_player_money(player_id):
+    """
+    Met à jour l'argent du joueur.
+    """
+    data = request.json
+    amount = data.get('amount')
+
+    if amount is None:
+        return jsonify({"error": "Montant requis"}), 400
+
+    success = PlayerService.update_player_money(player_id, amount)
+    if success:
+        return jsonify({"message": "Argent mis à jour avec succès"}), 200
+    return jsonify({"error": "Impossible de mettre à jour l'argent"}), 400
 
 
+@player_controller.route('/<int:player_id>/hacking_power', methods=['PATCH'])
+def update_hacking_power(player_id):
+    """
+    Met à jour la puissance de hacking du joueur.
+    """
+    data = request.json
+    power = data.get('power')
+
+    if power is None:
+        return jsonify({"error": "Valeur de hacking power requise"}), 400
+
+    success = PlayerService.update_hacking_power(player_id, power)
+    if success:
+        return jsonify({"message": "Puissance de hacking mise à jour avec succès"}), 200
+    return jsonify({"error": "Impossible de mettre à jour la puissance de hacking"}), 400
