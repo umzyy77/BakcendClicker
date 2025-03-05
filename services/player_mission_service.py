@@ -1,16 +1,19 @@
-from models.difficulty import Difficulty
-from models.mission import Mission
-from models.player import Player
-from models.player_mission import PlayerMission
-from models.status import Status
+import pymysql
+
+from services.upgrade_service import UpgradeService
 from utils.db_connection import get_db_connection
 from utils.logger import log_error
 
+
 class PlayerMissionService:
+    """
+    Service gérant l'association des joueurs avec les missions.
+    """
+
     @staticmethod
-    def start_mission(player_id: int, mission_id: int):
+    def get_missions_for_player(player_id: int):
         """
-        Assigne une mission à un joueur.
+        Récupère toutes les missions d’un joueur avec leur statut actuel.
         """
         connection = get_db_connection()
         if not connection:
@@ -18,26 +21,215 @@ class PlayerMissionService:
 
         try:
             with connection.cursor() as cursor:
-                # On commence la mission, le statut est 'en cours' (id_status = 2)
-                cursor.execute("""
-                     INSERT INTO player_mission (id_player, id_mission, id_status) 
-                     VALUES (%s, %s, 2)
-                 """, (player_id, mission_id))  # Mission en cours
-                connection.commit()
+                sql = """
+                SELECT pm.id_mission, m.name, pm.id_status, pm.clicks_done, d.clicks_required
+                FROM player_mission pm
+                JOIN mission m ON pm.id_mission = m.id_mission
+                JOIN difficulty d ON m.id_difficulty = d.id_difficulty
+                WHERE pm.id_player = %s
+                ORDER BY pm.id_mission
+                """
+                cursor.execute(sql, (player_id,))
+                return cursor.fetchall()
+        except pymysql.MySQLError as e:
+            log_error(f"❌ Erreur lors de la récupération des missions du joueur : {e}")
+            return None
+        finally:
+            connection.close()
 
-            return {"message": "Mission started"}
-
-        except Exception as e:
-            log_error(f"Erreur lors du démarrage de la mission {mission_id} pour le joueur {player_id}: {e}")
+    @staticmethod
+    def get_first_unlocked_mission(player_id: int):
+        """
+        Récupère l'ID de la première mission déverrouillée mais non commencée.
+        """
+        connection = get_db_connection()
+        if not connection:
             return None
 
+        try:
+            with connection.cursor() as cursor:
+                sql = """
+                SELECT id_mission FROM player_mission 
+                WHERE id_player = %s AND id_status = 2 
+                ORDER BY id_mission ASC LIMIT 1
+                """
+                cursor.execute(sql, (player_id,))
+                mission = cursor.fetchone()
+                return mission["id_mission"] if mission else None
+        except pymysql.MySQLError as e:
+            log_error(f"❌ Erreur lors de la récupération de la mission déverrouillée : {e}")
+            return None
+        finally:
+            connection.close()
+
+    @staticmethod
+    def start_mission(player_id: int, mission_id: int = None):
+        """
+        Démarre une mission si elle est en unlocked ou reprend une mission en cours/completée.
+        """
+        if not mission_id:
+            return False
+
+        connection = get_db_connection()
+        if not connection:
+            return False
+
+        try:
+            with connection.cursor() as cursor:
+                sql = """
+                UPDATE player_mission SET id_status = 3 WHERE id_player = %s AND id_mission = %s AND id_status IN (2, 3, 4)
+                """
+                cursor.execute(sql, (player_id, mission_id))
+                connection.commit()
+                return cursor.rowcount > 0
+        except pymysql.MySQLError as e:
+            log_error(f"❌ Erreur lors du démarrage de la mission : {e}")
+            return False
+        finally:
+            connection.close()
+
+    @staticmethod
+    def assign_default_missions(player_id: int):
+        """
+        Assigne toutes les missions au joueur avec la première mission en unlocked.
+        """
+        connection = get_db_connection()
+        if not connection:
+            return False
+
+        try:
+            with connection.cursor() as cursor:
+                # Trouver l'ID de la première mission
+                sql = "SELECT MIN(id_mission) AS first_mission FROM mission"
+                cursor.execute(sql)
+                first_mission = cursor.fetchone()
+
+                if not first_mission or not first_mission["first_mission"]:
+                    return False
+
+                first_mission_id = first_mission["first_mission"]
+
+                # Insérer les missions avec la première débloquée
+                sql = """
+                INSERT INTO player_mission (id_player, id_mission, id_status, clicks_done)
+                SELECT %s, id_mission, 
+                       CASE WHEN id_mission = %s THEN 2 ELSE 1 END, 0 
+                FROM mission
+                """
+                cursor.execute(sql, (player_id, first_mission_id))
+                connection.commit()
+                return True
+        except pymysql.MySQLError as e:
+            log_error(f"❌ Erreur lors de l'assignation des missions : {e}")
+            return False
+        finally:
+            connection.close()
+
+    @staticmethod
+    def assign_next_mission(player_id: int, mission_id: int):
+        """
+        Déverrouille la prochaine mission après la complétion de la mission actuelle.
+        """
+        connection = get_db_connection()
+        if not connection:
+            return False
+
+        try:
+            with connection.cursor() as cursor:
+                # Trouver l'ID de la mission suivante
+                sql = """
+                SELECT id_mission FROM mission 
+                WHERE id_mission > %s 
+                ORDER BY id_mission ASC 
+                LIMIT 1
+                """
+                cursor.execute(sql, (mission_id,))
+                next_mission = cursor.fetchone()
+
+                if not next_mission:
+                    return False  # Aucune mission suivante
+
+                next_mission_id = next_mission["id_mission"]
+
+                # Débloquer la mission suivante
+                sql = """
+                UPDATE player_mission 
+                SET id_status = 2 
+                WHERE id_player = %s 
+                  AND id_mission = %s 
+                  AND id_status = 1
+                """
+                cursor.execute(sql, (player_id, next_mission_id))
+                connection.commit()
+
+                return cursor.rowcount > 0
+        except pymysql.MySQLError as e:
+            log_error(f"❌ Erreur lors du déverrouillage de la prochaine mission : {e}")
+            return False
+        finally:
+            connection.close()
+
+
+    @staticmethod
+    def increment_clicks(player_id: int, mission_id: int):
+        """
+        Incrémente les clics d'une mission en fonction des bonus et vérifie la complétion.
+        """
+        connection = get_db_connection()
+        if not connection:
+            return False
+
+        try:
+            with connection.cursor() as cursor:
+                # 🔒 Verrouille la mission en cours pour éviter les race conditions
+                sql = """
+                SELECT clicks_done, id_status FROM player_mission 
+                WHERE id_player = %s AND id_mission = %s FOR UPDATE
+                """
+                cursor.execute(sql, (player_id, mission_id))
+                mission = cursor.fetchone()
+
+                if not mission or mission[1] != 3:  # Vérifie si la mission est bien en cours (id_status = 3)
+                    return False  # Mission pas en cours
+
+                # 🔥 Récupérer le bonus de clics grâce à UpgradeService
+                click_bonus = UpgradeService.get_total_click_bonus(player_id)
+                click_increment = 1 + click_bonus  # 1 clic de base + bonus d'améliorations
+
+                new_clicks = mission[0] + click_increment
+
+                # Mettre à jour le compteur de clics
+                sql = """
+                UPDATE player_mission SET clicks_done = %s 
+                WHERE id_player = %s AND id_mission = %s
+                """
+                cursor.execute(sql, (new_clicks, player_id, mission_id))
+                connection.commit()
+
+                # Vérifier si l'objectif de la mission est atteint
+                sql = """
+                SELECT d.clicks_required 
+                FROM mission m 
+                JOIN difficulty d ON m.id_difficulty = d.id_difficulty 
+                WHERE m.id_mission = %s
+                """
+                cursor.execute(sql, (mission_id,))
+                objective = cursor.fetchone()
+
+                if new_clicks >= objective[0]:
+                    return PlayerMissionService.complete_mission(player_id, mission_id)
+
+                return True
+        except pymysql.MySQLError as e:
+            log_error(f"❌ Erreur lors de l'incrémentation des clics : {e}")
+            return False
         finally:
             connection.close()
 
     @staticmethod
     def complete_mission(player_id: int, mission_id: int):
         """
-        Marque une mission comme complétée pour un joueur et attribue les récompenses.
+        Marque une mission comme complétée, attribue les récompenses et débloque la suivante.
         """
         connection = get_db_connection()
         if not connection:
@@ -45,204 +237,31 @@ class PlayerMissionService:
 
         try:
             with connection.cursor() as cursor:
-                # Récupérer les récompenses de la mission
-                cursor.execute("""
-                    SELECT reward_money, reward_power FROM mission WHERE id_mission = %s
-                """, (mission_id,))
-                rewards = cursor.fetchone()
+                sql = "SELECT reward_money, reward_power FROM mission WHERE id_mission = %s"
+                cursor.execute(sql, (mission_id,))
+                mission = cursor.fetchone()
 
-                if not rewards:
+                if not mission:
                     return False
 
-                # Mise à jour des récompenses
-                cursor.execute("""
-                    UPDATE player 
-                    SET money = money + %s, hacking_power = hacking_power + %s 
-                    WHERE id_player = %s
-                """, (rewards['reward_money'], rewards['reward_power'], player_id))
+                sql = "UPDATE player_mission SET id_status = 4 WHERE id_player = %s AND id_mission = %s"
+                cursor.execute(sql, (player_id, mission_id))
 
-                # Marque la mission comme complétée
-                cursor.execute("""
-                    UPDATE player_mission 
-                    SET id_status = 3  # statut 'complété'
-                    WHERE id_player = %s AND id_mission = %s
-                """, (player_id, mission_id))
+                sql = "UPDATE player SET money = money + %s, hacking_power = hacking_power + %s WHERE id_player = %s"
+                cursor.execute(sql, (mission["reward_money"], mission["reward_power"], player_id))
+
                 connection.commit()
 
-            return True
+                # Débloquer la mission suivante
+                PlayerMissionService.assign_next_mission(player_id, mission_id)
 
-        except Exception as e:
-            log_error(f"Erreur lors de la complétion de la mission {mission_id} pour le joueur {player_id}: {e}")
+                return True
+        except pymysql.MySQLError as e:
+            log_error(f"❌ Erreur lors de la complétion de la mission : {e}")
             return False
-
         finally:
             connection.close()
 
-    @staticmethod
-    def get_player_missions(player_id: int):
-        """
-        Récupère toutes les missions d'un joueur (en cours, échouées ou complétées).
-        """
-        connection = get_db_connection()
-        if not connection:
-            return []
 
-        try:
-            with connection.cursor() as cursor:
-                cursor.execute("""
-                    SELECT player_mission.id_player, player_mission.id_mission, player_mission.id_status, mission.name, status.label AS status_label 
-                    FROM player_mission
-                    INNER JOIN mission ON player_mission.id_mission = mission.id_mission
-                    INNER JOIN status ON player_mission.id_status = status.id_status
-                    WHERE player_mission.id_player = %s
-                """, (player_id,))
-                player_missions = cursor.fetchall()
 
-            missions = []
-            for mission_data in player_missions:
-                # Créer un objet Mission avec la difficulté liée
-                mission = Mission(
-                    id_mission=mission_data['id_mission'],
-                    name=mission_data['name'],
-                    reward_money=mission_data['reward_money'],
-                    reward_power=mission_data['reward_power'],
-                    difficulty=Difficulty(id_difficulty=mission_data['id_difficulty'], label=mission_data['difficulty_label'])
-                )
-                status = Status(id_status=mission_data['id_status'], label=mission_data['status_label'])
-                player_mission = PlayerMission(
-                    player=Player(id_player=mission_data['id_player'], username=''),  # Ajouter l'objet Player avec ses informations
-                    mission=mission,
-                    status=status
-                )
-                missions.append(player_mission.to_dict())
 
-            return missions
-
-        except Exception as e:
-            log_error(f"Erreur lors de la récupération des missions du joueur {player_id}: {e}")
-            return []
-
-        finally:
-            connection.close()
-
-    @staticmethod
-    def get_player_mission(player_id: int, mission_id: int):
-        """
-        Récupère une mission spécifique d'un joueur.
-        """
-        connection = get_db_connection()
-        if not connection:
-            return None
-
-        try:
-            with connection.cursor() as cursor:
-                cursor.execute("""
-                    SELECT player_mission.id_player, player_mission.id_mission, player_mission.id_status, 
-                        mission.name, mission.reward_money, mission.reward_power, difficulty.label AS difficulty_label, 
-                        status.label AS status_label
-                    FROM player_mission
-                    INNER JOIN mission ON player_mission.id_mission = mission.id_mission
-                    INNER JOIN difficulty ON mission.id_difficulty = difficulty.id_difficulty
-                    INNER JOIN status ON player_mission.id_status = status.id_status
-                    WHERE player_mission.id_player = %s AND player_mission.id_mission = %s
-                """, (player_id, mission_id))
-                mission_data = cursor.fetchone()
-
-            if not mission_data:
-                return None
-
-            # Création de l'objet Mission et Status avec la difficulté liée
-            mission = Mission(
-                id_mission=mission_data['id_mission'],
-                name=mission_data['name'],
-                reward_money=mission_data['reward_money'],
-                reward_power=mission_data['reward_power'],
-                difficulty=Difficulty(id_difficulty=mission_data['id_difficulty'], label=mission_data['difficulty_label'])  # Difficulté associée
-            )
-            status = Status(id_status=mission_data['id_status'], label=mission_data['status_label'])
-
-            player_mission = PlayerMission(
-                player=Player(id_player=mission_data['id_player'], username=''),  # Ajout du joueur
-                mission=mission,
-                status=status
-            )
-
-            return player_mission.to_dict()
-
-        except Exception as e:
-            log_error(f"Erreur lors de la récupération de la mission {mission_id} pour le joueur {player_id}: {e}")
-            return None
-
-        finally:
-            connection.close()
-
-    @staticmethod
-    def assign_mission_to_player(player_id: int, mission_id: int, status_id: int = 1):
-        """
-        Assigne une mission à un joueur.
-        """
-        connection = get_db_connection()
-        if not connection:
-            return None
-
-        try:
-            with connection.cursor() as cursor:
-                cursor.execute("""
-                    INSERT INTO player_mission (id_player, id_mission, id_status) 
-                    VALUES (%s, %s, %s)
-                """, (player_id, mission_id, status_id))
-                connection.commit()
-
-            return {"status": "success", "message": "Mission assigned successfully"}
-
-        except Exception as e:
-            log_error(f"Erreur lors de l'assignation de la mission {mission_id} au joueur {player_id}: {e}")
-            return {"status": "error", "message": "Failed to assign mission"}
-
-        finally:
-            connection.close()
-
-    @staticmethod
-    def get_player_in_progress_missions(player_id: int):
-        """
-        Récupère toutes les missions en cours d'un joueur.
-        """
-        connection = get_db_connection()
-        if not connection:
-            return []
-
-        try:
-            with connection.cursor() as cursor:
-                cursor.execute("""
-                       SELECT mission.id_mission, mission.name, mission.id_difficulty, mission.reward_money, mission.reward_power, difficulty.label 
-                       FROM mission
-                       INNER JOIN player_mission ON mission.id_mission = player_mission.id_mission
-                       INNER JOIN difficulty ON mission.id_difficulty = difficulty.id_difficulty
-                       WHERE player_mission.id_player = %s AND player_mission.id_status = 2
-                   """, (player_id,))
-                missions_data = cursor.fetchall()
-
-            missions = []
-            for mission_data in missions_data:
-                # Créer l'objet Difficulty avec les données récupérées
-                difficulty = Difficulty(id_difficulty=mission_data['id_difficulty'], label=mission_data['label'])
-
-                # Créer l'objet Mission en incluant l'objet Difficulty
-                mission = Mission(
-                    id_mission=mission_data['id_mission'],
-                    name=mission_data['name'],
-                    reward_money=mission_data['reward_money'],
-                    reward_power=mission_data['reward_power'],
-                    difficulty=difficulty  # Lier l'objet Difficulty ici
-                )
-                # Ajouter la mission à la liste
-                missions.append(mission.to_dict())
-
-            return missions
-
-        except Exception as e:
-            log_error(f"Erreur lors de la récupération des missions en cours du joueur {player_id}: {e}")
-            return []
-
-        finally:
-            connection.close()

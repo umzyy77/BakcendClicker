@@ -1177,3 +1177,133 @@ TypeError: cannot unpack non-iterable Response object
 2025-03-04 17:47:36,989 - INFO - 127.0.0.1 - - [04/Mar/2025 17:47:36] "[33mGET /books HTTP/1.1[0m" 404 -
 2025-03-04 17:47:43,148 - INFO - \u2705 Connexion réussie à MySQL !
 2025-03-04 17:47:43,164 - INFO - 127.0.0.1 - - [04/Mar/2025 17:47:43] "GET /players/2 HTTP/1.1" 200 -
+2025-03-04 18:35:56,147 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-03-04 18:35:56,147 - INFO - [33mPress CTRL+C to quit[0m
+2025-03-04 21:44:45,183 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-03-04 21:44:45,183 - INFO - [33mPress CTRL+C to quit[0m
+2025-03-04 22:21:40,993 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-03-04 22:21:40,993 - INFO - [33mPress CTRL+C to quit[0m
+2025-03-04 22:22:51,077 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-03-04 22:22:51,078 - INFO - [33mPress CTRL+C to quit[0m
+2025-03-04 22:23:08,938 - INFO - 127.0.0.1 - - [04/Mar/2025 22:23:08] "GET / HTTP/1.1" 200 -
+2025-03-04 22:23:16,720 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-04 22:23:16,736 - INFO - 127.0.0.1 - - [04/Mar/2025 22:23:16] "[33mGET /players/2 HTTP/1.1[0m" 404 -
+2025-03-04 22:24:38,428 - INFO - 127.0.0.1 - - [04/Mar/2025 22:24:38] "[33mPOST /1/clic HTTP/1.1[0m" 404 -
+2025-03-04 22:25:45,588 - INFO - 127.0.0.1 - - [04/Mar/2025 22:25:45] "[33mPOST /1/clic HTTP/1.1[0m" 404 -
+2025-03-04 22:26:22,033 - INFO - 127.0.0.1 - - [04/Mar/2025 22:26:22] "[31m[1mGET /players/1/click HTTP/1.1[0m" 405 -
+2025-03-04 22:26:22,064 - INFO - 127.0.0.1 - - [04/Mar/2025 22:26:22] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-03-04 22:26:30,796 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-04 22:26:30,812 - INFO - 127.0.0.1 - - [04/Mar/2025 22:26:30] "[33mGET /players/1 HTTP/1.1[0m" 404 -
+2025-03-04 22:28:39,220 - INFO - 127.0.0.1 - - [04/Mar/2025 22:28:39] "[33mPOST /players/1/clic HTTP/1.1[0m" 404 -
+2025-03-04 22:32:28,137 - INFO - 127.0.0.1 - - [04/Mar/2025 22:32:28] "[33mPOST /players/1/clic%0A HTTP/1.1[0m" 404 -
+2025-03-04 22:32:49,441 - INFO - 127.0.0.1 - - [04/Mar/2025 22:32:49] "[33mPOST /players/1/click%0A HTTP/1.1[0m" 404 -
+2025-03-04 22:33:03,064 - INFO - 127.0.0.1 - - [04/Mar/2025 22:33:03] "[33mPOST /players/1/click%0A%0A HTTP/1.1[0m" 404 -
+2025-03-04 22:34:43,737 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-03-04 22:34:43,737 - INFO - [33mPress CTRL+C to quit[0m
+2025-03-04 22:34:45,889 - INFO - 127.0.0.1 - - [04/Mar/2025 22:34:45] "[33mPOST /players/1/click%0A%0A HTTP/1.1[0m" 404 -
+2025-03-04 22:34:49,080 - INFO - 127.0.0.1 - - [04/Mar/2025 22:34:49] "[33mPOST /players/1/click%0A%0A HTTP/1.1[0m" 404 -
+2025-03-04 22:36:45,610 - INFO - 127.0.0.1 - - [04/Mar/2025 22:36:45] "[31m[1mGET /players/1 HTTP/1.1[0m" 405 -
+2025-03-04 22:36:46,022 - INFO - 127.0.0.1 - - [04/Mar/2025 22:36:46] "[31m[1mGET /players/1 HTTP/1.1[0m" 405 -
+2025-03-04 22:36:48,845 - INFO - 127.0.0.1 - - [04/Mar/2025 22:36:48] "[31m[1mGET /players/1 HTTP/1.1[0m" 405 -
+2025-03-04 22:36:57,599 - INFO - 127.0.0.1 - - [04/Mar/2025 22:36:57] "[31m[1mGET /players/2 HTTP/1.1[0m" 405 -
+2025-03-04 22:36:57,777 - INFO - 127.0.0.1 - - [04/Mar/2025 22:36:57] "[31m[1mGET /players/2 HTTP/1.1[0m" 405 -
+2025-03-04 22:37:08,637 - INFO - 127.0.0.1 - - [04/Mar/2025 22:37:08] "[33mGET /players HTTP/1.1[0m" 404 -
+2025-03-04 22:37:30,988 - INFO - 127.0.0.1 - - [04/Mar/2025 22:37:30] "[31m[1mGET /players/1 HTTP/1.1[0m" 405 -
+2025-03-04 22:37:31,573 - INFO - 127.0.0.1 - - [04/Mar/2025 22:37:31] "[31m[1mGET /players/1 HTTP/1.1[0m" 405 -
+2025-03-04 22:37:41,279 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-03-04 22:37:41,279 - INFO - [33mPress CTRL+C to quit[0m
+2025-03-04 22:37:43,492 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-04 22:37:43,510 - INFO - 127.0.0.1 - - [04/Mar/2025 22:37:43] "[33mGET /players/1 HTTP/1.1[0m" 404 -
+2025-03-04 22:37:48,208 - INFO - 127.0.0.1 - - [04/Mar/2025 22:37:48] "[33mPOST /players/1/click%0A%0A HTTP/1.1[0m" 404 -
+2025-03-04 22:37:50,145 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-04 22:37:50,161 - INFO - 127.0.0.1 - - [04/Mar/2025 22:37:50] "[33mGET /players/1 HTTP/1.1[0m" 404 -
+2025-03-04 22:37:56,189 - INFO - 127.0.0.1 - - [04/Mar/2025 22:37:56] "[33mGET /players HTTP/1.1[0m" 404 -
+2025-03-04 22:37:58,976 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-04 22:37:58,991 - INFO - 127.0.0.1 - - [04/Mar/2025 22:37:58] "[33mGET /players/1 HTTP/1.1[0m" 404 -
+2025-03-04 22:38:35,596 - INFO - 127.0.0.1 - - [04/Mar/2025 22:38:35] "[33mPOST /players/1/clcik HTTP/1.1[0m" 404 -
+2025-03-04 22:38:41,627 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-04 22:38:41,782 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-04 22:38:41,885 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-04 22:38:41,996 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-04 22:38:42,012 - ERROR - Erreur lors de la récupération des tâches de la mission 2: MissionTask.__init__() got an unexpected keyword argument 'id_mission'
+2025-03-04 22:38:42,087 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-04 22:38:50,260 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-04 22:38:53,139 - INFO - 127.0.0.1 - - [04/Mar/2025 22:38:53] "[33mPOST /players/1/clickd HTTP/1.1[0m" 404 -
+2025-03-04 22:38:56,970 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-04 22:39:13,566 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-04 22:40:42,615 - ERROR - Erreur lors de l'application du bonus des améliorations pour le joueur 1: (1205, 'Lock wait timeout exceeded; try restarting transaction')
+2025-03-04 22:40:42,735 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-04 22:40:42,735 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-04 22:40:42,749 - INFO - 127.0.0.1 - - [04/Mar/2025 22:40:42] "[33mPOST /players/1/click HTTP/1.1[0m" 404 -
+2025-03-04 22:40:42,824 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-04 22:40:42,913 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-04 22:40:42,928 - ERROR - Erreur lors de la récupération des tâches de la mission 2: MissionTask.__init__() got an unexpected keyword argument 'id_mission'
+2025-03-04 22:40:43,003 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-04 22:40:57,037 - ERROR - Erreur lors de l'incrémentation du hacking power du joueur 1: (1205, 'Lock wait timeout exceeded; try restarting transaction')
+2025-03-04 22:40:57,037 - INFO - 127.0.0.1 - - [04/Mar/2025 22:40:57] "[33mPOST /players/1/click HTTP/1.1[0m" 404 -
+2025-03-04 22:41:12,508 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-03-04 22:41:12,508 - INFO - [33mPress CTRL+C to quit[0m
+2025-03-04 22:41:14,265 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-04 22:41:14,353 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-04 22:41:14,368 - INFO - 127.0.0.1 - - [04/Mar/2025 22:41:14] "[33mPOST /players/1/click HTTP/1.1[0m" 404 -
+2025-03-04 22:41:30,979 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-03-04 22:41:30,979 - INFO - [33mPress CTRL+C to quit[0m
+2025-03-04 22:41:33,080 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-04 22:41:33,174 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-04 22:41:33,266 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-04 22:41:33,360 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-04 22:41:33,375 - ERROR - Erreur lors de la récupération des tâches de la mission 2: MissionTask.__init__() got an unexpected keyword argument 'id_mission'
+2025-03-04 22:41:33,456 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-04 22:41:33,471 - INFO - 127.0.0.1 - - [04/Mar/2025 22:41:33] "[33mPOST /players/1/click HTTP/1.1[0m" 404 -
+2025-03-04 22:42:00,104 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-03-04 22:42:00,104 - INFO - [33mPress CTRL+C to quit[0m
+2025-03-04 22:42:02,767 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-04 22:42:02,859 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-04 22:42:02,951 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-04 22:42:02,965 - INFO - 127.0.0.1 - - [04/Mar/2025 22:42:02] "[33mPOST /players/1/click HTTP/1.1[0m" 404 -
+2025-03-04 22:42:18,959 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-03-04 22:42:18,959 - INFO - [33mPress CTRL+C to quit[0m
+2025-03-04 22:42:20,577 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-04 22:42:20,669 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-04 22:42:20,685 - INFO - 127.0.0.1 - - [04/Mar/2025 22:42:20] "[33mPOST /players/1/click HTTP/1.1[0m" 404 -
+2025-03-04 22:42:58,678 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-03-04 22:42:58,678 - INFO - [33mPress CTRL+C to quit[0m
+2025-03-04 22:43:01,097 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-04 22:43:01,200 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-04 22:43:01,215 - INFO - 127.0.0.1 - - [04/Mar/2025 22:43:01] "[33mPOST /players/1/click HTTP/1.1[0m" 404 -
+2025-03-04 22:43:05,991 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-04 22:43:06,006 - INFO - 127.0.0.1 - - [04/Mar/2025 22:43:06] "[33mGET /players/1 HTTP/1.1[0m" 404 -
+2025-03-04 22:43:12,202 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-04 22:43:12,295 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-04 22:43:12,310 - INFO - 127.0.0.1 - - [04/Mar/2025 22:43:12] "[33mPOST /players/1/click HTTP/1.1[0m" 404 -
+2025-03-04 22:43:12,751 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-04 22:43:12,841 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-04 22:43:12,869 - INFO - 127.0.0.1 - - [04/Mar/2025 22:43:12] "[33mPOST /players/1/click HTTP/1.1[0m" 404 -
+2025-03-04 22:43:13,440 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-04 22:43:13,550 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-04 22:43:13,564 - INFO - 127.0.0.1 - - [04/Mar/2025 22:43:13] "[33mPOST /players/1/click HTTP/1.1[0m" 404 -
+2025-03-04 22:43:17,576 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-04 22:43:17,593 - INFO - 127.0.0.1 - - [04/Mar/2025 22:43:17] "[33mGET /players/1 HTTP/1.1[0m" 404 -
+2025-03-04 22:43:38,368 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-03-04 22:43:38,368 - INFO - [33mPress CTRL+C to quit[0m
+2025-03-04 22:43:44,863 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-04 22:43:44,960 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-04 22:43:45,051 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-04 22:43:45,066 - INFO - 127.0.0.1 - - [04/Mar/2025 22:43:45] "[33mPOST /players/1/click HTTP/1.1[0m" 404 -
+2025-03-04 22:44:13,384 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-03-04 22:44:13,384 - INFO - [33mPress CTRL+C to quit[0m
+2025-03-04 22:44:15,352 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-04 22:44:15,369 - INFO - 127.0.0.1 - - [04/Mar/2025 22:44:15] "[33mPOST /players/1/click HTTP/1.1[0m" 404 -

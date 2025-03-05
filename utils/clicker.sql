@@ -1,5 +1,4 @@
 SET FOREIGN_KEY_CHECKS = 0;
-DROP TABLE IF EXISTS mission_task;
 DROP TABLE IF EXISTS player_mission;
 DROP TABLE IF EXISTS player_upgrade;
 DROP TABLE IF EXISTS player;
@@ -15,10 +14,11 @@ START TRANSACTION;
 SET time_zone = "+00:00";
 SET NAMES utf8mb4;
 
--- 🔹 Table `difficulty` (Niveaux de difficulté des missions)
+-- 🔹 Table `difficulty` (Niveaux de difficulté des missions, avec clics requis)
 CREATE TABLE `difficulty` (
   `id_difficulty` INT NOT NULL AUTO_INCREMENT,
   `label` VARCHAR(50) NOT NULL,
+  `clicks_required` INT NOT NULL, -- Nombre de clics requis pour accomplir une mission de ce niveau
   PRIMARY KEY (`id_difficulty`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -76,21 +76,12 @@ CREATE TABLE `mission` (
   CONSTRAINT fk_mission_difficulty FOREIGN KEY (`id_difficulty`) REFERENCES `difficulty`(`id_difficulty`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- 🔹 Table `mission_task` (Objectifs des missions, ex: nombre de clics nécessaires)
-CREATE TABLE `mission_task` (
-  `id_task` INT NOT NULL AUTO_INCREMENT,
-  `id_mission` INT NOT NULL,
-  `task_type` VARCHAR(50) NOT NULL, -- Ex: 'clicks', 'use_upgrade', 'time_limit'
-  `task_value` INT NOT NULL, -- Ex: 1000 clics, 1 amélioration nécessaire
-  PRIMARY KEY (`id_task`),
-  CONSTRAINT fk_mission_task_mission FOREIGN KEY (`id_mission`) REFERENCES `mission`(`id_mission`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
--- 🔹 Table `player_mission` (Joueur → Missions accomplies avec statut)
+-- 🔹 Table `player_mission` (Joueur → Missions accomplies avec statut et progression des clics)
 CREATE TABLE `player_mission` (
   `id_player` INT NOT NULL,
   `id_mission` INT NOT NULL,
   `id_status` INT NOT NULL,
+  `clicks_done` INT NOT NULL DEFAULT 0, -- Suivi des clics réalisés
   PRIMARY KEY (`id_player`, `id_mission`),
   CONSTRAINT fk_player_mission_player FOREIGN KEY (`id_player`) REFERENCES `player`(`id_player`) ON DELETE CASCADE,
   CONSTRAINT fk_player_mission_mission FOREIGN KEY (`id_mission`) REFERENCES `mission`(`id_mission`) ON DELETE CASCADE,
@@ -99,11 +90,11 @@ CREATE TABLE `player_mission` (
 
 -- ✅ Insertion des données de base
 
--- 🟢 Difficulté des missions
-INSERT INTO `difficulty` (`label`) VALUES ('Facile'), ('Moyen'), ('Difficile');
+-- 🟢 Difficulté des missions avec clics requis
+INSERT INTO `difficulty` (`label`, `clicks_required`) VALUES ('Facile', 50), ('Moyen', 300), ('Difficile', 1000);
 
 -- 🟢 Statuts des missions
-INSERT INTO `status` (`label`) VALUES ('unlocked'), ('in_progress'), ('completed'), ('failed');
+INSERT INTO `status` (`label`) VALUES ('locked'), ('unlocked'), ('in_progress'), ('completed');
 
 -- 🟢 Améliorations disponibles
 INSERT INTO `upgrade` (`name`) VALUES ('Processeur Amélioré'), ('Botnet Basique'), ('VPN Sécurisé');
@@ -120,17 +111,11 @@ INSERT INTO `mission` (`name`, `id_difficulty`, `reward_money`, `reward_power`) 
 ('Accéder à une banque', 2, 1000, 5),
 ('Infiltrer un gouvernement', 3, 5000, 10);
 
--- 🟢 Objectifs des missions
-INSERT INTO `mission_task` (`id_mission`, `task_type`, `task_value`) VALUES
-(1, 'clicks', 1000),
-(2, 'clicks', 5000),
-(3, 'use_upgrade', 1);
-
 -- 🟢 Création de joueurs
 INSERT INTO `player` (`username`, `hacking_power`, `money`) VALUES ('NeoHacker', 1, 0), ('DarkShadow', 2, 500);
 
 -- 🟢 Assignation de missions aux joueurs
-INSERT INTO `player_mission` (`id_player`, `id_mission`, `id_status`) VALUES (1, 1, 3), (1, 2, 2), (2, 3, 4);
+INSERT INTO `player_mission` (`id_player`, `id_mission`, `id_status`, `clicks_done`) VALUES (1, 1, 3, 10), (1, 2, 2, 50), (2, 3, 4, 300);
 
 -- 🟢 Achats d'améliorations par les joueurs
 INSERT INTO `player_upgrade` (`id_player`, `id_level`) VALUES (1, 1), (1, 2), (2, 3);

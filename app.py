@@ -6,6 +6,8 @@ from werkzeug.exceptions import HTTPException
 from controllers.mission_controller import mission_controller
 from controllers.upgrade_controller import upgrade_controller
 from controllers.player_controller import player_controller
+from controllers.mission_task_controller import mission_task_controller
+from controllers.player_mission_controller import player_mission_controller
 from utils.logger import log_error
 
 app = Flask(__name__)
@@ -15,6 +17,8 @@ CORS(app)  # Active CORS
 app.register_blueprint(mission_controller)
 app.register_blueprint(upgrade_controller)
 app.register_blueprint(player_controller)
+app.register_blueprint(mission_task_controller)
+app.register_blueprint(player_mission_controller)
 
 # Middleware Global pour gérer les erreurs
 @app.errorhandler(Exception)

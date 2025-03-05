@@ -17,5 +17,5 @@ class Mission:
             "name": self.name,
             "reward_money": self.reward_money,
             "reward_power": self.reward_power,
-            "difficulty": self.difficulty.to_dict()  # Sérialisation de l'objet Difficulty
+            "difficulty": self.difficulty.to_dict()
         }
