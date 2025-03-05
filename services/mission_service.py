@@ -1,7 +1,6 @@
 import pymysql
 from utils.db_connection import get_db_connection
 from utils.logger import log_error
-from models.difficulty import Difficulty
 
 
 class MissionService:
