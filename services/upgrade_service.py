@@ -11,14 +11,13 @@ class UpgradeService:
     def get_total_click_bonus(player_id: int) -> int:
         """
         Récupère le bonus total de clics en fonction des améliorations achetées par le joueur.
-        Utilisé dans la gameloop du player_mission_service.py.
         """
         connection = get_db_connection()
         if not connection:
             return 0  # Aucun bonus en cas d'erreur
 
         try:
-            with connection.cursor() as cursor:
+            with connection.cursor(pymysql.cursors.DictCursor) as cursor:  # 🛠️ Correction ici
                 sql = """
                 SELECT COALESCE(SUM(ul.boost_value), 0) AS total_bonus
                 FROM player_upgrade pu
@@ -27,7 +26,9 @@ class UpgradeService:
                 """
                 cursor.execute(sql, (player_id,))
                 result = cursor.fetchone()
-                return result[0] if result else 0
+
+                return result["total_bonus"] if result else 0  # 🛠️ Correction ici
+
         except pymysql.MySQLError as e:
             log_error(f"❌ Erreur lors de la récupération du bonus total de clics : {e}")
             return 0

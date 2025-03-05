@@ -2,7 +2,7 @@ import pymysql
 
 from services.upgrade_service import UpgradeService
 from utils.db_connection import get_db_connection
-from utils.logger import log_error
+from utils.logger import log_error, log_info
 
 
 class PlayerMissionService:
@@ -221,11 +221,12 @@ class PlayerMissionService:
         """
         connection = get_db_connection()
         if not connection:
+            log_error(f"🚨 Impossible d'obtenir une connexion à la base de données")
             return False
 
         try:
-            with connection.cursor() as cursor:
-                # 🔒 Verrouille la mission en cours pour éviter les race conditions
+            with connection.cursor(pymysql.cursors.DictCursor) as cursor:  # 🛠️ Correction ici
+                # 🔒 Verrouille la mission en cours
                 sql = """
                 SELECT clicks_done, id_status FROM player_mission 
                 WHERE id_player = %s AND id_mission = %s FOR UPDATE
@@ -233,14 +234,20 @@ class PlayerMissionService:
                 cursor.execute(sql, (player_id, mission_id))
                 mission = cursor.fetchone()
 
-                if not mission or mission[1] != 3:  # Vérifie si la mission est bien en cours (id_status = 3)
-                    return False  # Mission pas en cours
+                if not mission:
+                    log_error(f"❌ Mission {mission_id} introuvable pour le joueur {player_id}.")
+                    return False
+
+                if mission["id_status"] != 3:  # 🛠️ Correction ici
+                    log_error(
+                        f"🚫 Mission {mission_id} n'est pas en cours pour le joueur {player_id}. Statut actuel: {mission['id_status']}")
+                    return False
 
                 # 🔥 Récupérer le bonus de clics grâce à UpgradeService
-                click_bonus = UpgradeService.get_total_click_bonus(player_id)
-                click_increment = 1 + click_bonus  # 1 clic de base + bonus d'améliorations
+                click_bonus = UpgradeService.get_total_click_bonus(player_id) or 0
+                click_increment = 1 + click_bonus
 
-                new_clicks = mission[0] + click_increment
+                new_clicks = mission["clicks_done"] + click_increment  # 🛠️ Correction ici
 
                 # Mettre à jour le compteur de clics
                 sql = """
@@ -249,6 +256,8 @@ class PlayerMissionService:
                 """
                 cursor.execute(sql, (new_clicks, player_id, mission_id))
                 connection.commit()
+
+                log_info(f"✅ Joueur {player_id} - Mission {mission_id} : {new_clicks} clics enregistrés.")
 
                 # Vérifier si l'objectif de la mission est atteint
                 sql = """
@@ -260,7 +269,11 @@ class PlayerMissionService:
                 cursor.execute(sql, (mission_id,))
                 objective = cursor.fetchone()
 
-                if new_clicks >= objective[0]:
+                if not objective:
+                    log_error(f"🚨 Impossible de récupérer l'objectif pour la mission {mission_id}.")
+                    return False
+
+                if new_clicks >= objective["clicks_required"]:
                     return PlayerMissionService.complete_mission(player_id, mission_id)
 
                 return True
