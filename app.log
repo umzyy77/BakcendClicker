@@ -531,3 +531,22 @@ KeyError: -1
 2025-03-05 22:49:42,311 - INFO - 127.0.0.1 - - [05/Mar/2025 22:49:42] "GET /players/3 HTTP/1.1" 200 -
 2025-03-05 22:49:46,942 - INFO - \u2705 Connexion réussie à MySQL !
 2025-03-05 22:49:46,958 - INFO - 127.0.0.1 - - [05/Mar/2025 22:49:46] "GET /upgrades/3 HTTP/1.1" 200 -
+2025-03-05 22:51:11,163 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-03-05 22:51:11,163 - INFO - [33mPress CTRL+C to quit[0m
+2025-03-05 23:07:01,294 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-03-05 23:07:01,294 - INFO - [33mPress CTRL+C to quit[0m
+2025-03-05 23:07:01,298 - INFO -  * Restarting with stat
+2025-03-05 23:07:01,482 - WARNING -  * Debugger is active!
+2025-03-05 23:07:01,485 - INFO -  * Debugger PIN: 746-439-247
+2025-03-05 23:07:09,962 - INFO - 127.0.0.1 - - [05/Mar/2025 23:07:09] "GET / HTTP/1.1" 200 -
+2025-03-05 23:07:14,484 - INFO - 127.0.0.1 - - [05/Mar/2025 23:07:14] "[33mGET /enemies/1 HTTP/1.1[0m" 404 -
+2025-03-05 23:07:18,856 - INFO - \u2705 Connexion réussie à MySQL !
+2025-03-05 23:07:18,873 - INFO - 127.0.0.1 - - [05/Mar/2025 23:07:18] "GET /players/3 HTTP/1.1" 200 -
+2025-03-05 23:21:23,338 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-03-05 23:21:23,338 - INFO - [33mPress CTRL+C to quit[0m
+2025-03-05 23:21:23,338 - INFO -  * Restarting with stat
+2025-03-05 23:21:23,523 - WARNING -  * Debugger is active!
+2025-03-05 23:21:23,526 - INFO -  * Debugger PIN: 746-439-247
