@@ -3,6 +3,8 @@ from services.mission_service import MissionService
 
 mission_controller = Blueprint('mission', __name__, url_prefix='/missions')
 
+
+
 @mission_controller.route('/<int:mission_id>', methods=['GET'])
 def get_mission(mission_id):
     """
@@ -12,6 +14,14 @@ def get_mission(mission_id):
     if mission:
         return jsonify(mission), 200
     return jsonify({"error": "Mission non trouvée"}), 404
+
+@mission_controller.route('/difficulties', methods=['GET'])
+def get_all_difficulties():
+    """
+    Récupère toutes les difficultés de missions.
+    """
+    difficulties = MissionService.get_all_difficulties()
+    return jsonify(difficulties), 200
 
 
 @mission_controller.route('', methods=['GET'])
