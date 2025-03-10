@@ -315,7 +315,3 @@ class PlayerMissionService:
             return False
         finally:
             connection.close()
-
-
-
-
