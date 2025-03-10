@@ -217,7 +217,8 @@ class PlayerMissionService:
     @staticmethod
     def increment_clicks(player_id: int, mission_id: int):
         """
-        Incrémente les clics d'une mission en fonction des bonus et vérifie la complétion.
+        Incrémente les clics d'une mission et vérifie la complétion.
+        Bloque les clics si l'objectif est déjà atteint.
         """
         connection = get_db_connection()
         if not connection:
@@ -225,11 +226,14 @@ class PlayerMissionService:
             return False
 
         try:
-            with connection.cursor(pymysql.cursors.DictCursor) as cursor:  # 🛠️ Correction ici
-                # 🔒 Verrouille la mission en cours
+            with connection.cursor(pymysql.cursors.DictCursor) as cursor:
+                # 🔍 Vérifier le statut et les clics de la mission
                 sql = """
-                SELECT clicks_done, id_status FROM player_mission 
-                WHERE id_player = %s AND id_mission = %s FOR UPDATE
+                SELECT pm.clicks_done, d.clicks_required, pm.id_status 
+                FROM player_mission pm
+                JOIN mission m ON pm.id_mission = m.id_mission
+                JOIN difficulty d ON m.id_difficulty = d.id_difficulty
+                WHERE pm.id_player = %s AND pm.id_mission = %s FOR UPDATE
                 """
                 cursor.execute(sql, (player_id, mission_id))
                 mission = cursor.fetchone()
@@ -238,18 +242,24 @@ class PlayerMissionService:
                     log_error(f"❌ Mission {mission_id} introuvable pour le joueur {player_id}.")
                     return False
 
-                if mission["id_status"] != 3:  # 🛠️ Correction ici
+                # 🚫 Vérifier si la mission est déjà terminée
+                if mission["clicks_done"] >= mission["clicks_required"]:
+                    log_info(f"🛑 Joueur {player_id} - Mission {mission_id} est déjà terminée. Clics bloqués.")
+                    return False  # On bloque toute tentative d'incrémentation après complétion
+
+                if mission["id_status"] != 3:  # Vérifier que la mission est en cours
                     log_error(
-                        f"🚫 Mission {mission_id} n'est pas en cours pour le joueur {player_id}. Statut actuel: {mission['id_status']}")
+                        f"🚫 Mission {mission_id} n'est pas en cours pour le joueur {player_id}. Statut actuel: {mission['id_status']}"
+                    )
                     return False
 
-                # 🔥 Récupérer le bonus de clics grâce à UpgradeService
+                # 🔥 Appliquer le bonus de clics
                 click_bonus = UpgradeService.get_total_click_bonus(player_id) or 0
                 click_increment = 1 + click_bonus
 
-                new_clicks = mission["clicks_done"] + click_increment  # 🛠️ Correction ici
+                new_clicks = mission["clicks_done"] + click_increment
 
-                # Mettre à jour le compteur de clics
+                # ✅ Mettre à jour le compteur de clics
                 sql = """
                 UPDATE player_mission SET clicks_done = %s 
                 WHERE id_player = %s AND id_mission = %s
@@ -259,21 +269,8 @@ class PlayerMissionService:
 
                 log_info(f"✅ Joueur {player_id} - Mission {mission_id} : {new_clicks} clics enregistrés.")
 
-                # Vérifier si l'objectif de la mission est atteint
-                sql = """
-                SELECT d.clicks_required 
-                FROM mission m 
-                JOIN difficulty d ON m.id_difficulty = d.id_difficulty 
-                WHERE m.id_mission = %s
-                """
-                cursor.execute(sql, (mission_id,))
-                objective = cursor.fetchone()
-
-                if not objective:
-                    log_error(f"🚨 Impossible de récupérer l'objectif pour la mission {mission_id}.")
-                    return False
-
-                if new_clicks >= objective["clicks_required"]:
+                # 📌 Vérifier si la mission est terminée
+                if new_clicks >= mission["clicks_required"]:
                     return PlayerMissionService.complete_mission(player_id, mission_id)
 
                 return True

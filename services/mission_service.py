@@ -9,6 +9,26 @@ class MissionService:
     """
 
     @staticmethod
+    def get_all_difficulties():
+        """
+        Récupère toutes les difficultés disponibles.
+        """
+        connection = get_db_connection()
+        if not connection:
+            return []
+
+        try:
+            with connection.cursor(pymysql.cursors.DictCursor) as cursor:
+                sql = "SELECT * FROM difficulty"
+                cursor.execute(sql)
+                return cursor.fetchall()
+        except pymysql.MySQLError as e:
+            log_error(f"❌ Erreur lors de la récupération des difficultés : {e}")
+            return []
+        finally:
+            connection.close()
+
+    @staticmethod
     def get_mission(mission_id: int):
         """
         Récupère une mission par son ID.
